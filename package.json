@@ -1,5 +1,5 @@
 {
-  "name": "whatsapp-bot",
+  "name": "Bucky Barnes",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -30,12 +30,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Whats-bot/testbot.git"
+    "url": "git+https://github.com/KoMaR005/Bucky-Barnes.git"
   },
   "author": "ben",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Whats-bot/testbot/issues"
+    "url": "https://github.com/KoMaR005/Bucky-Barnes"
   },
-  "homepage": "https://github.com/Whats-bot/testbot#readme"
+  "homepage": "https://github.com/KoMaR005/Bucky-Barnes+"
 }
