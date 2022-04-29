@@ -8,7 +8,7 @@ let FormData = require('form-data')
 let fetch = require('node-fetch')
 const afkJs = require('./lib/afk')
 const moment = require('moment-timezone');
-const { mess, меню, ingfo, listCode } = require('./lib/text')
+const { mess, menu, ingfo, listCode } = require('./lib/text')
 const { color, getBuffer, convertMp3 } = require('./lib/func')
 moment.tz.setDefault('Asia/Jakarta').locale('id');
 module.exports = handle = (client, Client) => {
@@ -915,7 +915,7 @@ module.exports = handle = (client, Client) => {
                 case 'list':
  	                 const mediaMsg = await client.prepareMessageMedia(await getBuffer(configs.imgUrl), 'imageMessage')
                      const buttonMessage = {
-                           contentText: меню(data.prefix, data.pushname),
+                           contentText: menu(data.prefix, data.pushname),
                            footerText: 'KoMaR',
                                 "contextInfo": {
 									  mentionedJid: [configs.ownerList[0]],
@@ -1495,8 +1495,8 @@ module.exports = handle = (client, Client) => {
                     data.reply(`https://chat.whatsapp.com/${linkgc}`)
                     break
                     /*DLL*/
-                case 'stickerменю':
-                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/менюs.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk menampilkan меню!', {
+                case 'stickermenu':
+                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/menus.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk menampilkan menu!', {
                         quoted: resData
                     }))
                     Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/sticks.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk membuat sticker dengan cara reply image/video dengan sticker ini', {
@@ -1505,7 +1505,7 @@ module.exports = handle = (client, Client) => {
                     Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/open.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk membuka group', {
                         quoted: resData
                     }))
-                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/close.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk менюtup group', {
+                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/close.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk menutup group', {
                         quoted: resData
                     }))
                     break
@@ -1575,7 +1575,7 @@ module.exports = handle = (client, Client) => {
             	*/
             switch(idStick) {
                 case '2.453746655066493e+123':
-                    datas.reply(меню(configs.prefix == 'multi' ? '/' : configs.prefix))
+                    datas.reply(menu(configs.prefix == 'multi' ? '/' : configs.prefix))
                     break
                 case '1.415045466145215e+123':
                     if(datas.isQuotedImage || datas.isQuotedVideo) {
