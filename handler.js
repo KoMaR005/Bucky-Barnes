@@ -8,12 +8,12 @@ let FormData = require('form-data')
 let fetch = require('node-fetch')
 const afkJs = require('./lib/afk')
 const moment = require('moment-timezone');
-const { mess, menu, ingfo, listCode } = require('./lib/text')
+const { mess, меню, ingfo, listCode } = require('./lib/text')
 const { color, getBuffer, convertMp3 } = require('./lib/func')
 moment.tz.setDefault('Asia/Jakarta').locale('id');
 module.exports = handle = (client, Client) => {
     try {
-        /*DOWNLOADER*/
+        /*ЗАГРУЗКИ*/
         Client.cmd.on('ytmp4', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
@@ -117,7 +117,7 @@ module.exports = handle = (client, Client) => {
                 data.reply('Maaf lagu tidak ditemukan')
             }
         })
-        /*RANDOM*/
+        /*РАЗНОЕ*/
         Client.cmd.on('fml', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             res = await axios.get(`${configs.apiUrl}/api/fml?apikey=${configs.zeksKey}`)
@@ -174,7 +174,7 @@ module.exports = handle = (client, Client) => {
         Client.cmd.on('info', async (data) => {
 		data.reply(ingfo)
 		})
-		/*ANIME*/
+		/*АНИМЭ*/
         Client.cmd.on('waifu', async (data) => {
 			if(isLimit(data.sender)) return data.reply(mess.limit)
 			const res = await axios.get(`https://waifu.pics/api/sfw/waifu`)
@@ -241,7 +241,7 @@ module.exports = handle = (client, Client) => {
                 data.reply('Character not found')
             }
 		})
-        /*OWNER*/
+        /*ВЛАДЕЛЕЦ*/
         Client.cmd.on('setpp', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
             if(!data.isQuotedImage && data.type != 'imageMessage') return data.reply(`Wrong format!, please send image with caption ${data.prefix}setgroupicon, or reply image with ${data.prefix}setgroupicon`)
@@ -409,7 +409,7 @@ module.exports = handle = (client, Client) => {
             }
             await Client.sendFileFromUrl(data.from, ttt[0].thumb, 'p.jpg', teks, data.message)
         })
-        /*GROUP*/
+        /*ГРУППЫ*/
         Client.cmd.on('afk', (data) => {
             if(!data.isGroup) return data.reply(mess.group)
             timesNow = moment(data.t * 1000).format('YYYY-MM-DD HH:mm:ss')
@@ -910,13 +910,13 @@ module.exports = handle = (client, Client) => {
 				break
                 case 'command':
                 case 'cmd':
-                case 'menu':
+                case 'меню':
                 case 'help':
                 case 'list':
  	                 const mediaMsg = await client.prepareMessageMedia(await getBuffer(configs.imgUrl), 'imageMessage')
                      const buttonMessage = {
-                           contentText: menu(data.prefix, data.pushname),
-                           footerText: 'HANZ々OFC彡',
+                           contentText: меню(data.prefix, data.pushname),
+                           footerText: 'KoMaR',
                                 "contextInfo": {
 									  mentionedJid: [configs.ownerList[0]],
                                       participant: sender,
@@ -934,7 +934,7 @@ module.exports = handle = (client, Client) => {
                                      {
                                        buttonId: `${data.prefix}owner`,
                                        buttonText: {
-                                          displayText: "OWNER"
+                                          displayText: "ВЛАДЕЛЕЦ"
                                         },
                                          "type": "RESPONSE"
                                      },
@@ -945,7 +945,7 @@ module.exports = handle = (client, Client) => {
                     let zz = await client.prepareMessageFromContent(from, {buttonsMessage: buttonMessage}, {})
                 	client.relayWAMessage(zz, {waitForAck: true})     
                     break
-                    /*STICKER*/
+                    /*СТИКЕРЫ*/
                 case 'sgif':
                 case 'sticker':
                 case 's':
@@ -1060,7 +1060,7 @@ module.exports = handle = (client, Client) => {
                         })
                     } else data.reply(`Wrong format!, tag someone or reply image with ${data.prefix}stickerfire`)
                     break
-                    /*TEXT MAKER*/
+                    /*СОЗДАТЕЛЬ ТЕКСТА*/
                 case 'qrencode':
                 case 'barcode':
                 case 'bneon':
@@ -1130,7 +1130,7 @@ module.exports = handle = (client, Client) => {
                         author: 'AUTHOR'
                     })
                     break
-                    /*SEARCHING*/
+                    /*ПОИСК*/
                 case 'playstore':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
@@ -1474,7 +1474,7 @@ module.exports = handle = (client, Client) => {
                     text = p.split('|')
 			        Client.sendFileFromUrl(from, `${configs.apiUrl}/api/tts?apikey=${configs.zeksKey}&code=${text[0]}&text=${text[1]}`, 'p.mp3', '', message, {ptt: true}).catch(er => data.reply(listCode))
 					break
-                    /*GROUP*/
+                    /*ГРУППА*/
                 case 'hidetag':
                 case 'everyone':
                     if(!isAdmin) return data.reply('only be used by admin!')
@@ -1495,8 +1495,8 @@ module.exports = handle = (client, Client) => {
                     data.reply(`https://chat.whatsapp.com/${linkgc}`)
                     break
                     /*DLL*/
-                case 'stickermenu':
-                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/menus.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk menampilkan menu!', {
+                case 'stickerменю':
+                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/менюs.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk menampilkan меню!', {
                         quoted: resData
                     }))
                     Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/sticks.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk membuat sticker dengan cara reply image/video dengan sticker ini', {
@@ -1505,7 +1505,7 @@ module.exports = handle = (client, Client) => {
                     Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/open.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk membuka group', {
                         quoted: resData
                     }))
-                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/close.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk menutup group', {
+                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/close.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk менюtup group', {
                         quoted: resData
                     }))
                     break
@@ -1575,7 +1575,7 @@ module.exports = handle = (client, Client) => {
             	*/
             switch(idStick) {
                 case '2.453746655066493e+123':
-                    datas.reply(menu(configs.prefix == 'multi' ? '/' : configs.prefix))
+                    datas.reply(меню(configs.prefix == 'multi' ? '/' : configs.prefix))
                     break
                 case '1.415045466145215e+123':
                     if(datas.isQuotedImage || datas.isQuotedVideo) {
