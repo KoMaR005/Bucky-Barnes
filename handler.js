@@ -910,7 +910,7 @@ module.exports = handle = (client, Client) => {
 				break
                 case 'command':
                 case 'cmd':
-                case 'меню':
+                case 'menu':
                 case 'help':
                 case 'list':
  	                 const mediaMsg = await client.prepareMessageMedia(await getBuffer(configs.imgUrl), 'imageMessage')
@@ -1419,7 +1419,7 @@ module.exports = handle = (client, Client) => {
                     ttt.forEach(tt1 => teks += `*Kata* : ${tt1.kata}\n*Author* : ${tt1.author}\n*Info*: ${tt1.author_info}\n*Link*: ${tt1.author_url}\n\n` )
                     await data.reply(teks)
                     break
-                    /*PRIMBON*/
+                    /*ГОРОСКОП*/
                 case 'jodoh':
                 case 'ramalpasangan':
                 case 'pasangan':
@@ -1450,7 +1450,7 @@ module.exports = handle = (client, Client) => {
                     if(res.data.status == false) data.reply(res.data.message)
                     data.reply(res.data.result.string)
                     break
-                    /*OTHER*/
+                    /*ДРУГОЕ*/
                 case 'jsholat':
                 case 'jadwalsholat':
                 case 'jadwalshalat':
@@ -1488,7 +1488,7 @@ module.exports = handle = (client, Client) => {
                         }
                     })
                     break
-                case 'linkgroup':
+                case 'СссылкаГруппы':
                     if(!data.isGroup) return data.reply(mess.group)
                     if(!data.botIsAdmin) return data.reply(mess.botAdmin)
                     linkgc = await client.groupInviteCode(data.from)
