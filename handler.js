@@ -13,7 +13,7 @@ const { color, getBuffer, convertMp3 } = require('./lib/func')
 moment.tz.setDefault('Asia/Jakarta').locale('id');
 module.exports = handle = (client, Client) => {
     try {
-        /*ЗАГРУЗКИ*/
+        /*DOWNLOADER*/
         Client.cmd.on('ytmp4', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
@@ -117,7 +117,7 @@ module.exports = handle = (client, Client) => {
                 data.reply('Maaf lagu tidak ditemukan')
             }
         })
-        /*РАЗНОЕ*/
+        /*RANDOM*/
         Client.cmd.on('fml', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             res = await axios.get(`${configs.apiUrl}/api/fml?apikey=${configs.zeksKey}`)
@@ -174,7 +174,7 @@ module.exports = handle = (client, Client) => {
         Client.cmd.on('info', async (data) => {
 		data.reply(ingfo)
 		})
-		/*АНИМЭ*/
+		/*ANIME*/
         Client.cmd.on('waifu', async (data) => {
 			if(isLimit(data.sender)) return data.reply(mess.limit)
 			const res = await axios.get(`https://waifu.pics/api/sfw/waifu`)
@@ -241,7 +241,7 @@ module.exports = handle = (client, Client) => {
                 data.reply('Character not found')
             }
 		})
-        /*ВЛАДЕЛЕЦ*/
+        /*OWNER*/
         Client.cmd.on('setpp', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
             if(!data.isQuotedImage && data.type != 'imageMessage') return data.reply(`Wrong format!, please send image with caption ${data.prefix}setgroupicon, or reply image with ${data.prefix}setgroupicon`)
@@ -409,14 +409,14 @@ module.exports = handle = (client, Client) => {
             }
             await Client.sendFileFromUrl(data.from, ttt[0].thumb, 'p.jpg', teks, data.message)
         })
-        /*ГРУППЫ*/
+        /*GROUP*/
         Client.cmd.on('afk', (data) => {
             if(!data.isGroup) return data.reply(mess.group)
             timesNow = moment(data.t * 1000).format('YYYY-MM-DD HH:mm:ss')
             afkJs.addAfk(data.from, data.sender, data.body, timesNow)
             Client.sendText(data.from, "```" + `${data.pushname} [@${data.sender.split('@')[0]}] sedang AFK\n\nAlasan: ${data.body}\nTime: ${timesNow}` + "```")
         })
-	     Client.cmd.on('Приветствие', (data) => {
+	     Client.cmd.on('welcome', (data) => {
             if(!data.isGroup) return data.reply(mess.admin)
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
@@ -433,7 +433,7 @@ module.exports = handle = (client, Client) => {
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*Winter Soldier*",
+                  "title": "*WHATSAPP-BOT*",
                   "description": "pilh on/off",
                   "buttonText": "COMMANDS",
                   "listType": "SINGLE_SELECT",
@@ -486,7 +486,7 @@ module.exports = handle = (client, Client) => {
             client.relayWAMessage(po, {waitForAck: true})	
 			})
         })
-        Client.cmd.on('Покинул', (data) => {
+        Client.cmd.on('leave', (data) => {
             if(!data.isGroup) return data.reply(mess.admin)
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
@@ -503,7 +503,7 @@ module.exports = handle = (client, Client) => {
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*Winter Soldier*",
+                  "title": "*WHATSAPP-BOT*",
                   "description": "pilh on/off",
                   "buttonText": "COMMANDS",
                   "listType": "SINGLE_SELECT",
@@ -540,7 +540,7 @@ module.exports = handle = (client, Client) => {
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*Winter Soldier*",
+                  "title": "*WHATSAPP-BOT*",
                   "description": "pilh on/off",
                   "buttonText": "COMMANDS",
                   "listType": "SINGLE_SELECT",
@@ -560,7 +560,7 @@ module.exports = handle = (client, Client) => {
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
-		Client.cmd.on('АнтитегВнимание', (data) => {
+		Client.cmd.on('antitagall', (data) => {
             if(!data.isGroup) return data.reply(mess.admin)
             if(!data.isAdmin) return data.reply(mess.admin)
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
@@ -578,7 +578,7 @@ module.exports = handle = (client, Client) => {
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*Winter Soldier*",
+                  "title": "*WHATSAPP-BOT*",
                   "description": "pilh on/off",
                   "buttonText": "COMMANDS",
                   "listType": "SINGLE_SELECT",
@@ -598,7 +598,7 @@ module.exports = handle = (client, Client) => {
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
-		Client.cmd.on('АнтиСсылка', (data) => {
+		Client.cmd.on('antilink', (data) => {
             if(!data.isGroup) return data.reply(mess.admin)
             if(!data.isAdmin) return data.reply(mess.admin)
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
@@ -616,7 +616,7 @@ module.exports = handle = (client, Client) => {
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*Winter Soldier*",
+                  "title": "*WHATSAPP-BOT*",
                   "description": "pilh on/off",
                   "buttonText": "COMMANDS",
                   "listType": "SINGLE_SELECT",
@@ -624,11 +624,11 @@ module.exports = handle = (client, Client) => {
                      {
                         "rows": [
                            {
-                              "title": "ВКЛ",
+                              "title": "on",
                               "rowId": `${data.prefix}${data.command} on`
                            },
 						   {
-                              "title": "ВЫКЛ",
+                              "title": "off",
                               "rowId": `${data.prefix}${data.command} off`
                            }
                         ]
@@ -636,7 +636,7 @@ module.exports = handle = (client, Client) => {
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
-        Client.cmd.on('ОтозватьСсылку', (data) => {
+        Client.cmd.on('revoke', (data) => {
             if(!data.isGroup) return data.reply(mess.group)
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             if(!data.isAdmin) return data.reply(mess.admin)
@@ -656,7 +656,7 @@ module.exports = handle = (client, Client) => {
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*Winter Soldier*",
+                  "title": "*WHATSAPP-BOT*",
                   "description": "pilh open/close",
                   "buttonText": "COMMANDS",
                   "listType": "SINGLE_SELECT",
@@ -664,11 +664,11 @@ module.exports = handle = (client, Client) => {
                      {
                         "rows": [
                            {
-                              "title": "ОТКР",
+                              "title": "open",
                               "rowId": `${data.prefix}${data.command} open`
                            },
 						   {
-                              "title": "ЗАКР",
+                              "title": "close",
                               "rowId": `${data.prefix}${data.command} close`
                            }
                         ]
@@ -676,12 +676,12 @@ module.exports = handle = (client, Client) => {
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
-        Client.cmd.on('Пока', (data) => {
+        Client.cmd.on('bye', (data) => {
             if(!data.isGroup) return data.reply(mess.group)
             if(!data.isAdmin) return data.reply(mess.admin)
             client.groupLeave(data.from)
         })
-        Client.cmd.on('Внимание', async (data) => {
+        Client.cmd.on('tagall', async (data) => {
             if(!data.isGroup) return data.reply(mess.group)
             if(!data.isAdmin) return data.reply(mess.admin)
             text = `『 *_TAG ALL_* 』\n\n*Total member*: ${data.groupMetadata.participants.length}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
@@ -735,7 +735,7 @@ module.exports = handle = (client, Client) => {
             if(data.mentionedJidList.length == 0) return data.reply(`Kirim perintah *${data.prefix}${data.command} [ @tag ]*\nContoh : ${data.prefix}${data.command} @0`)
             client.groupDemoteAdmin(data.from, data.mentionedJidList).then(() => data.reply(`Perintah diterima, menghapus admin @${data.mentionedJidList.join(' @').replace(/@s.whatsapp.net/g, '')}`)).catch(() => data.reply('Gagal!'))
         })
-        Client.cmd.on('Удалить', async (data) => {
+        Client.cmd.on('kick', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             if(!data.isGroup) return data.reply(mess.group)
             if(!data.isAdmin) return data.reply(mess.admin)
@@ -743,7 +743,7 @@ module.exports = handle = (client, Client) => {
             if(data.mentionedJidList.length == 0) return data.reply(`Kirim perintah *${data.prefix}${data.command} [ @tag ]*\nContoh : ${data.prefix}${data.command} @0`)
             data.mentionedJidList.forEach(async jid =>{ client.groupRemove(data.from, [jid]).then(x => data.reply(`Sukses kick @${jid.split('@')[0]}`)).catch(x => data.reply(`Gagal kick @${jid.split('@')[0]}`)); await sleep(2000)})
         })
-        Client.cmd.on('Добавить', async (data) => {
+        Client.cmd.on('add', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             if(!data.isGroup) return data.reply(mess.group)
             if(!data.isAdmin) return data.reply(mess.admin)
@@ -755,7 +755,7 @@ module.exports = handle = (client, Client) => {
         Client.cmd.on('testing', async (data) => {
             console.log(client)
         })
-        /*СОЗДАТЕЛЬ ИЗОБРАЖЕНИЙ*/
+        /*IMAGE MAKER*/
         Client.cmd.on('missing', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             data.reply(mess.wait)
@@ -781,7 +781,7 @@ module.exports = handle = (client, Client) => {
             } else data.reply(`Wrong format!, Example: tag someone or reply image\n${data.prefix}missing lost|idk|call xxxxx|@${client.user.jid.split('@')[0]}`)
 
         })
-        Client.cmd.on('Календарь', async (data) => {
+        Client.cmd.on('calender', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             data.reply(mess.wait)
             if(data.isQuotedImage || data.type == 'imageMessage') {
@@ -902,7 +902,7 @@ module.exports = handle = (client, Client) => {
 					Client.self = true
 					data.reply('OK')
 				break
-				case 'Публичный':
+				case 'public':
 					if (!isOwner) return data.reply(mess.ownerOnly)
 					if (!Client.self) return data.reply('Already Public Mode')
 					Client.self = false
@@ -916,7 +916,7 @@ module.exports = handle = (client, Client) => {
  	                 const mediaMsg = await client.prepareMessageMedia(await getBuffer(configs.imgUrl), 'imageMessage')
                      const buttonMessage = {
                            contentText: menu(data.prefix, data.pushname),
-                           footerText: 'KoMaR',
+                           footerText: 'HANZ々OFC彡',
                                 "contextInfo": {
 									  mentionedJid: [configs.ownerList[0]],
                                       participant: sender,
@@ -934,7 +934,7 @@ module.exports = handle = (client, Client) => {
                                      {
                                        buttonId: `${data.prefix}owner`,
                                        buttonText: {
-                                          displayText: "ВЛАДЕЛЕЦ"
+                                          displayText: "OWNER"
                                         },
                                          "type": "RESPONSE"
                                      },
@@ -945,13 +945,13 @@ module.exports = handle = (client, Client) => {
                     let zz = await client.prepareMessageFromContent(from, {buttonsMessage: buttonMessage}, {})
                 	client.relayWAMessage(zz, {waitForAck: true})     
                     break
-                    /*СТИКЕРЫ*/
-                case 'Сгиф':
-                case 'Стикер':
-                case 'С':
-                case 'Стикер':
-                case 'СтикерГиф':
-                case 'СтикерГиф':
+                    /*STICKER*/
+                case 'sgif':
+                case 'sticker':
+                case 's':
+                case 'stiker':
+                case 'stickergif':
+                case 'stikergif':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(type != 'videoMessage' && !isQuotedVideo && !isQuotedImage && type != 'imageMessage') return data.reply('Wrong format!')
                     const getbuff = data.isQuotedVideo || data.isQuotedImage ? JSON.parse(JSON.stringify(data.message).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : data.message
@@ -967,8 +967,8 @@ module.exports = handle = (client, Client) => {
 				    const dlfilez = await client.downloadMediaMessage(getbuffz)
                     convertMp3(dlfilez).then(data =>Client.sendFileFromUrl(from, data, 'p.mp3', '', message)).catch(er => Client.reply(from, 'Unexpected error!', message))
 					break
-                case 'СтикерВм':
-                case 'СтикерВм':
+                case 'stikerwm':
+                case 'stickerwm':
                 case 'swm':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(type != 'videoMessage' && !isQuotedVideo && !isQuotedImage && type != 'imageMessage') return data.reply('Wrong format!')
@@ -991,8 +991,8 @@ module.exports = handle = (client, Client) => {
                         data.reply('error')
                     }
                     break
-                case 'ВзятьНаклейку':
-                case 'ВзятьНаклейку':
+                case 'takestick':
+                case 'takestik':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(!data.isQuotedSticker) return data.reply('Reply sticker!')
                     if(data.body == "") return data.reply(`Kirim perintah *${data.prefix}${data.command} [ pack|author ]*\nContoh : ${data.prefix}${data.command} punya|elios`)
@@ -1002,8 +1002,8 @@ module.exports = handle = (client, Client) => {
                     const buff = await client.downloadMediaMessage(JSON.parse(JSON.stringify(data.message).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo)
                     Client.sendWebpAsSticker(data.from, buff.toString('base64'), data.message, {pack: `${text[0]}`, author: `${text[1]}`, emojis: data.body.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g)})
                     break
-                case 'ОгненыйСтикер':
-                case 'ОгненыйСтикер':
+                case 'stikerfire':
+                case 'stickerfire':
                 case 'sfire':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(data.isQuotedImage || data.type == 'imageMessage') {
@@ -1060,13 +1060,13 @@ module.exports = handle = (client, Client) => {
                         })
                     } else data.reply(`Wrong format!, tag someone or reply image with ${data.prefix}stickerfire`)
                     break
-                    /*СОЗДАТЕЛЬ ТЕКСТА*/
+                    /*TEXT MAKER*/
                 case 'qrencode':
                 case 'barcode':
                 case 'bneon':
-                case 'Матрица':
+                case 'matrix':
                 case 'breakwall':
-                case 'GНеон':
+                case 'gneon':
                 case 'dropwater':
                 case 'tfire':
                 case 'sandw':
@@ -1079,9 +1079,9 @@ module.exports = handle = (client, Client) => {
                 case 'leavest':
                 case 'thundertext':
                 case 'tlight':
-                case 'Наруто':
-                case 'КроссФаирЛого':
-                case 'КСлого':
+                case 'naruto':
+                case 'crosslogo':
+                case 'cslogo':
                 case 'crismes':
                 case 'flametext':
                 case 'glowtext':
@@ -1130,7 +1130,7 @@ module.exports = handle = (client, Client) => {
                         author: 'AUTHOR'
                     })
                     break
-                    /*ПОИСК*/
+                    /*SEARCHING*/
                 case 'playstore':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
@@ -1419,7 +1419,7 @@ module.exports = handle = (client, Client) => {
                     ttt.forEach(tt1 => teks += `*Kata* : ${tt1.kata}\n*Author* : ${tt1.author}\n*Info*: ${tt1.author_info}\n*Link*: ${tt1.author_url}\n\n` )
                     await data.reply(teks)
                     break
-                    /*ГОРОСКОП*/
+                    /*PRIMBON*/
                 case 'jodoh':
                 case 'ramalpasangan':
                 case 'pasangan':
@@ -1450,7 +1450,7 @@ module.exports = handle = (client, Client) => {
                     if(res.data.status == false) data.reply(res.data.message)
                     data.reply(res.data.result.string)
                     break
-                    /*ДРУГОЕ*/
+                    /*OTHER*/
                 case 'jsholat':
                 case 'jadwalsholat':
                 case 'jadwalshalat':
@@ -1474,7 +1474,7 @@ module.exports = handle = (client, Client) => {
                     text = p.split('|')
 			        Client.sendFileFromUrl(from, `${configs.apiUrl}/api/tts?apikey=${configs.zeksKey}&code=${text[0]}&text=${text[1]}`, 'p.mp3', '', message, {ptt: true}).catch(er => data.reply(listCode))
 					break
-                    /*ГРУППА*/
+                    /*GROUP*/
                 case 'hidetag':
                 case 'everyone':
                     if(!isAdmin) return data.reply('only be used by admin!')
@@ -1488,7 +1488,7 @@ module.exports = handle = (client, Client) => {
                         }
                     })
                     break
-                case 'СссылкаГруппы':
+                case 'linkgroup':
                     if(!data.isGroup) return data.reply(mess.group)
                     if(!data.botIsAdmin) return data.reply(mess.botAdmin)
                     linkgc = await client.groupInviteCode(data.from)
