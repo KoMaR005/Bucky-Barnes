@@ -343,7 +343,7 @@ module.exports = handle = (client, Client) => {
             Client.acceptInviteLink(data.body).then(() => data.reply('ok')).catch(() => data.reply('failed'))
         })
         Client.cmd.on('владелец', async (data) => {
-            Client.sendContact(data.from, { number: configs.ownerList[0].split('@')[0], name: 'owner' }, data.message)
+            Client.sendContact(data.from, { number: configs.ownerList[0].split('@')[0], name: 'Владелец' }, data.message)
         })
         Client.cmd.on('премиум', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
