@@ -433,7 +433,7 @@ module.exports = handle = (client, Client) => {
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*WHATSAPP-BOT*",
+                  "title": "*Bucky Barnes*",
                   "description": "выбери вкл/выкл",
                   "buttonText": "КОМАНДЫ",
                   "listType": "SINGLE_SELECT",
@@ -494,17 +494,17 @@ module.exports = handle = (client, Client) => {
                 if(dataGc[data.from].leave) return data.reply('Already on!')
                 dataGc[data.from].leave = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
-                data.reply('Sukses!')
+                data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
                 if(!dataGc[data.from].leave) return data.reply('Already off!')
                 dataGc[data.from].leave = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
-                data.reply('Sukses!')
+                data.reply('Выполнено!')
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*WHATSAPP-BOT*",
-                  "description": "pilh on/off",
+                  "title": "*Bucky Barnes*",
+                  "description": "выбери вкл/выкл",
                   "buttonText": "КОМАНДЫ",
                   "listType": "SINGLE_SELECT",
                   "sections": [
@@ -523,7 +523,7 @@ module.exports = handle = (client, Client) => {
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
-		Client.cmd.on('antiviewonce', (data) => {
+		Client.cmd.on('антипросмотродинраз', (data) => {
             if(!data.isGroup) return data.reply(mess.admin)
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
@@ -531,28 +531,28 @@ module.exports = handle = (client, Client) => {
                 if(dataGc[data.from].antiviewonce) return data.reply('Already on!')
                 dataGc[data.from].antiviewonce = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
-                data.reply('Sukses!')
+                data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
                 if(!dataGc[data.from].antiviewonce) return data.reply('Already off!')
                 dataGc[data.from].antiviewonce = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
-                data.reply('Sukses!')
+                data.reply('Выполнено!')
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*WHATSAPP-BOT*",
-                  "description": "pilh on/off",
-                  "buttonText": "COMMANDS",
+                  "title": "*Bucky Barnes*",
+                  "description": "выбери вкл/выкл",
+                  "buttonText": "КОМАНДЫ",
                   "listType": "SINGLE_SELECT",
                   "sections": [
                      {
                         "rows": [
                            {
-                              "title": "on",
+                              "title": "вкл",
                               "rowId": `${data.prefix}${data.command} on`
                            },
 						   {
-                              "title": "off",
+                              "title": "выкл",
                               "rowId": `${data.prefix}${data.command} off`
                            }
                         ]
@@ -560,7 +560,7 @@ module.exports = handle = (client, Client) => {
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
-		Client.cmd.on('antitagall', (data) => {
+		Client.cmd.on('антивнимание', (data) => {
             if(!data.isGroup) return data.reply(mess.admin)
             if(!data.isAdmin) return data.reply(mess.admin)
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
@@ -569,28 +569,28 @@ module.exports = handle = (client, Client) => {
                 if(dataGc[data.from].antitagall) return data.reply('Already on!')
                 dataGc[data.from].antitagall = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
-                data.reply('Sukses!')
+                data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
                 if(!dataGc[data.from].antitagall) return data.reply('Already off!')
                 dataGc[data.from].antitagall = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
-                data.reply('Sukses!')
+                data.reply('Выполнено!')
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*WHATSAPP-BOT*",
-                  "description": "pilh on/off",
-                  "buttonText": "COMMANDS",
+                  "title": "*Bucky Barnes*",
+                  "description": "выбери вкл/выкл",
+                  "buttonText": "КОМАНДЫ",
                   "listType": "SINGLE_SELECT",
                   "sections": [
                      {
                         "rows": [
                            {
-                              "title": "on",
+                              "title": "вкл",
                               "rowId": `${data.prefix}${data.command} on`
                            },
 						   {
-                              "title": "off",
+                              "title": "выкл",
                               "rowId": `${data.prefix}${data.command} off`
                            }
                         ]
@@ -598,37 +598,37 @@ module.exports = handle = (client, Client) => {
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
-		Client.cmd.on('antilink', (data) => {
+		Client.cmd.on('антиссылка', (data) => {
             if(!data.isGroup) return data.reply(mess.admin)
             if(!data.isAdmin) return data.reply(mess.admin)
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
-            if(data.args[0].toLowerCase() == 'on') {
+            if(data.args[0].toLowerCase() == 'вкл') {
                 if(dataGc[data.from].antilink) return data.reply('Already on!')
                 dataGc[data.from].antilink = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
-                data.reply('Sukses!')
-            } else if(data.args[0].toLowerCase() == 'off') {
+                data.reply('Выполнено!')
+            } else if(data.args[0].toLowerCase() == 'выкл') {
                 if(!dataGc[data.from].antilink) return data.reply('Already off!')
                 dataGc[data.from].antilink = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
-                data.reply('Sukses!')
+                data.reply('Выполнено!')
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*WHATSAPP-BOT*",
-                  "description": "pilh on/off",
-                  "buttonText": "COMMANDS",
+                  "title": "*Bucky Barnes*",
+                  "description": "выбери вкл/выкл",
+                  "buttonText": "КОМАНДЫ",
                   "listType": "SINGLE_SELECT",
                   "sections": [
                      {
                         "rows": [
                            {
-                              "title": "on",
+                              "title": "вкл",
                               "rowId": `${data.prefix}${data.command} on`
                            },
 						   {
-                              "title": "off",
+                              "title": "выкл",
                               "rowId": `${data.prefix}${data.command} off`
                            }
                         ]
@@ -636,39 +636,40 @@ module.exports = handle = (client, Client) => {
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
-        Client.cmd.on('revoke', (data) => {
+        Client.cmd.on('отозватьссылку', (data) => {
             if(!data.isGroup) return data.reply(mess.group)
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             if(!data.isAdmin) return data.reply(mess.admin)
             client.revokeInvite(data.from)
-            data.reply(`Linkgroup berhasil di reset oleh admin @${data.sender.split('@')[0]}`)
+            data.reply(`Ссылка на группу была успешно сброшена администратором @${data.sender.split('@')[0]}`)
         })
-        Client.cmd.on('group', (data) => {
+        Client.cmd.on('группа', (data) => {
             if(!data.isGroup) return data.reply(mess.group)
             if(!data.isAdmin) return data.reply(mess.admin)
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
-            if(data.args[0] && data.args[0].toLowerCase() == 'open') {
+            if(data.args[0] && data.args[0].toLowerCase() == 'открыть') {
                 client.groupSettingChange(data.from, GroupSettingChange.messageSend, false)
-                data.reply(`Group telah dibuka oleh admin @${data.sender.split('@')[0]}`)
-            } else if(data.args[0] && data.args[0].toLowerCase() == 'close') {
+                data.reply(`
+                Группа открыта администратором @${data.sender.split('@')[0]}`)
+            } else if(data.args[0] && data.args[0].toLowerCase() == 'закрыть') {
                 client.groupSettingChange(data.from, GroupSettingChange.messageSend, true)
-                data.reply(`Group telah ditutup oleh admin @${data.sender.split('@')[0]}`)
+                data.reply(`Группа закрыта администратором @${data.sender.split('@')[0]}`)
             } else {
 				let po = client.prepareMessageFromContent(data.from, {
 					"listMessage":{
-                  "title": "*WHATSAPP-BOT*",
-                  "description": "pilh open/close",
-                  "buttonText": "COMMANDS",
+                  "title": "*Bucky Barnes*",
+                  "description": "выбери открыть/закрыть",
+                  "buttonText": "КОМАНДЫ",
                   "listType": "SINGLE_SELECT",
                   "sections": [
                      {
                         "rows": [
                            {
-                              "title": "open",
+                              "title": "открыть",
                               "rowId": `${data.prefix}${data.command} open`
                            },
 						   {
-                              "title": "close",
+                              "title": "закрыть",
                               "rowId": `${data.prefix}${data.command} close`
                            }
                         ]
@@ -676,7 +677,7 @@ module.exports = handle = (client, Client) => {
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
-        Client.cmd.on('bye', (data) => {
+        Client.cmd.on('пока', (data) => {
             if(!data.isGroup) return data.reply(mess.group)
             if(!data.isAdmin) return data.reply(mess.admin)
             client.groupLeave(data.from)
