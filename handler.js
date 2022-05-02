@@ -900,8 +900,7 @@ module.exports = handle = (client, Client) => {
             switch(command.toLowerCase()) {
 				case 'личный':
 					if (!isOwner) return data.reply(mess.ownerOnly)
-					if (Client.self) return data.reply('
-                    Уже личный режим')
+					if (Client.self) return data.reply('Уже себя  режим')
 					Client.self = true
 					data.reply('OK')
 				break
@@ -1064,34 +1063,34 @@ module.exports = handle = (client, Client) => {
                     } else data.reply(`Неверный формат!, отметьте кого-нибудь или ответьте картинкой с ${data.prefix}stickerfire`)
                     break
                     /*СОЗДАТЕЛЬ ТЕКСТА*/
-                case 'код qren':
-                case 'штрихкод':
-                case 'бнеон'
-                case 'матрица':
-                case 'сломатьстену':
-                case 'gнеон':
-                case 'капляводы':
-                case 'tогонь':
-                case 'песок':
-                case 'epep':
-                case 'gкнопкавоспроизведения':
-                case 'sкнопкавоспроизведения':
-                case 'текст3dbox':
-                case 'текст3d':
-                case 'logobp':
-                case 'самый левый':
-                case 'громовойтекст':
-                case 'сумерки':
-                case 'наруто':
-                case 'крестлоготип':
-                case 'cslogo':
-                case 'crismes':
-                case 'flametext':
-                case 'glowtext':
-                case 'smoketext':
-                case 'flowertext':
-                case 'lithgtext':
-                case 'nulis':
+                    case 'код qren':
+                        case 'штрихкод':
+                        case 'bнеон':
+                        case 'матрица':
+                        case 'сломатьстену':
+                        case 'gneon':
+                        case 'dropwater':
+                        case 'tfire':
+                        case 'sandw':
+                        case 'epep':
+                        case 'gplaybutton':
+                        case 'splaybutton':
+                        case 'text3dbox':
+                        case 'text3d':
+                        case 'logobp':
+                        case 'leavest':
+                        case 'thundertext':
+                        case 'tlight':
+                        case 'naruto':
+                        case 'crosslogo':
+                        case 'cslogo':
+                        case 'crismes':
+                        case 'flametext':
+                        case 'glowtext':
+                        case 'smoketext':
+                        case 'flowertext':
+                        case 'lithgtext':
+                        case 'nulis':
                     try {
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ teks ]*\nContoh : ${data.prefix}${data.command} shiro`)
