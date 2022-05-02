@@ -11,7 +11,7 @@ try {
 				stst = await client.getStatus(`${num.split('@')[0]}@c.us`)
 				stst = stst.status == 401 ? '' : stst.status
 				ppimg = await client.getProfilePicture(`${num.split('@')[0]}@c.us`).catch(() => ppimg = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
-				teks = `*[ НОВЫЙ УЧАСТНИК В ГРУППЕ ${mdata.subject} ]*\n\n*――――――――――――――*\n⤔ *Имя*: @${num.split('@')[0]}\n⤔ *Статус*: ${stst}\n*――――――――――――――*\n\nДобро пожаловать 🎊🎊🎉!`
+				teks = `*[ НОВЫЙ УЧАСТНИК В ГРУППЕ ${mdata.subject} ]*\n\n*――――――――――――――*\n⤔ *Имя*: @${num.split('@')[0]}\n⤔ *Статус*: ${stst}\n*――――――――――――――*\n\nДобро Пожаловать 🎊🎊🎉!`
 				let pushname = client.contacts[num].vname || client.contacts[num].notify || num.split('@')[0] 
 				Client.sendFileFromUrl(jdgn.jid, ppimg, 'user.jpg', teks, null, {contextInfo: {"mentionedJid": Client.getMentionedJidList(teks), "stanzaId":"xxxx","participant":"0@s.whatsapp.net","quotedMessage":{"groupInviteMessage":{"groupJid":from,"inviteCode":"OKOKLAH","inviteExpiration":9999,"groupName":from,"caption":`Participant Added/Join ${pushname}`}},"remoteJid":num}})
 			} else if (jdgn.action == 'remove') {
@@ -19,7 +19,7 @@ try {
 				stst = stst.status == 401 ? '' : stst.status
 				var ppimg;
 				ppimg = await client.getProfilePicture(`${num.split('@')[0]}@c.us`).catch(() => ppimg = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
-				teks = `*[ УЧАСТНИК ПОКИНУЛ/УДАЛЕН В ГРУППЕ ${mdata.subject} ]*\n\n*――――――――――――――*\n⤔ *Имя*: @${num.split('@')[0]}\n⤔ *Статус*: ${stst}\n*――――――――――――――*\n\nДо свидания  :(`
+				teks = `*[ УЧАСТНИК ПОКИНУЛ/УДАЛЕН В ГРУППЕ ${mdata.subject} ]*\n\n*――――――――――――――*\n⤔ *Имя*: @${num.split('@')[0]}\n⤔ *Статус*: ${stst}\n*――――――――――――――*\n\nДо свидания а лучше прощай :(`
 				let pushname = client.contacts[num].vname || client.contacts[num].notify || num.split('@')[0] 
 				Client.sendFileFromUrl(jdgn.jid, ppimg, 'user.jpg', teks, null, {contextInfo: {"mentionedJid": Client.getMentionedJidList(teks), "stanzaId":"xxxx","participant":"0@s.whatsapp.net","quotedMessage":{"groupInviteMessage":{"groupJid":from,"inviteCode":"OKOKLAH","inviteExpiration":9999,"groupName":from,"caption":`Participant Removed/Leave ${pushname}`}},"remoteJid":num}})
 			}
