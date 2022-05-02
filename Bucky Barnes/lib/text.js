@@ -6,34 +6,36 @@ const menu = (prefix, pushname) => {
 
 Good ${salam} ${pushname}, ДОБРОЕ ВРЕМЯ СУТОК! :)
 
-*📚 Всего команд : 135*
-*🪀 Владелец* : @${configs.ownerList[0].split('@')[0]}
+*📚 Total commands : 137*
+*🪀 Owner* : @${configs.ownerList[0].split('@')[0]}
 *🖊️ Prefix* : Multi
-*⏰ Время* : ${moment().utcOffset('1000').format('YYYY-MM-DD HH:mm:ss')} WIB
+*⏰ Time* : ${moment().utcOffset('1000').format('YYYY-MM-DD HH:mm:ss')} WIB
 *💌 Rest API's* : https://zeks.me
 
-*ТОЛЬКО АДМИНЫ*
-⿻${prefix}группа _открыть|закрыть_
-⿻${prefix}антис сылка _вкл|выкл_
-⿻${prefix}анти внимание _вкл|выкл_
-⿻${prefix}анти просмотр один раз _вкл|выкл_
-⿻${prefix}приветствие _вкл|выкл_
-⿻${prefix}покинул _вкл|выкл_
-⿻${prefix}сменить иконку группы _замена Иконки_
-⿻${prefix}сменить имя группы _текст_
-⿻${prefix}установить описание группы _текст_
-⿻${prefix}скрыть тег _текст_
-⿻${prefix}дать админа _@_
-⿻${prefix}снять админа _@_
-⿻${prefix}удалить _@tag_
-⿻${prefix}добавить _номер без+_
-⿻${prefix}внимание
-⿻${prefix}ссылка группы
-⿻${prefix}отозвать ссылку
+*GROUP ONLY*
+⿻${prefix}group _open|close_
+⿻${prefix}antilink _on|off_
+⿻${prefix}antitagall _on|off_
+⿻${prefix}antiviewonce _on|off_
+⿻${prefix}welcome _on|off_
+⿻${prefix}leave _on|off_
+⿻${prefix}setgroupicon _replyImage_
+⿻${prefix}setgroupname _text_
+⿻${prefix}setgroupdesc _text_
+⿻${prefix}hidetag _text_
+⿻${prefix}promote _@tag_
+⿻${prefix}demote _@tag_
+⿻${prefix}kick _@tag_
+⿻${prefix}add _number_
+⿻${prefix}getpp _@tag_
+⿻${prefix}tagall
+⿻${prefix}linkgroup
+⿻${prefix}revoke
+⿻${prefix}leave
 
-*ЗАГРУЗЧИК*
+*DOWNLOADER*
 ⿻${prefix}play _query_
-⿻${prefix}воспроизвестивидео _query_
+⿻${prefix}playvid _query_
 ⿻${prefix}youtubedl _query_
 ⿻${prefix}ytmp3 _link_
 ⿻${prefix}ytmp4 _link_
@@ -41,7 +43,7 @@ Good ${salam} ${pushname}, ДОБРОЕ ВРЕМЯ СУТОК! :)
 ⿻${prefix}ig _link_
 ⿻${prefix}joox _song_
 
-*СТИКЕРЫ*
+*STICKER*
 ⿻${prefix}stickerwm _pack|author_
 ⿻${prefix}takestick _pack|author_
 ⿻${prefix}toimg _replySticker_
@@ -52,7 +54,7 @@ Good ${salam} ${pushname}, ДОБРОЕ ВРЕМЯ СУТОК! :)
 ⿻${prefix}stickergif
 ⿻${prefix}sticker
 
-*АНИМЭ*
+*ANIME*
 ⿻${prefix}anime _query_
 ⿻${prefix}manga _query_
 ⿻${prefix}chara _query_
@@ -112,10 +114,10 @@ Good ${salam} ${pushname}, ДОБРОЕ ВРЕМЯ СУТОК! :)
 ⿻${prefix}smoketext _text_
 ⿻${prefix}lithgtext _text_
 ⿻${prefix}flowertext _text_
-⿻${prefix}bнеон _текст_
-⿻${prefix}матрица _текст_
-⿻${prefix}волнолом _текст_
-⿻${prefix}gнеон _текст_
+⿻${prefix}bneon _text_
+⿻${prefix}matrix _text_
+⿻${prefix}breakwall _text_
+⿻${prefix}gneon _text_
 ⿻${prefix}dropwater _text_
 ⿻${prefix}tfire _text_
 ⿻${prefix}sandw _text_
@@ -128,15 +130,15 @@ Good ${salam} ${pushname}, ДОБРОЕ ВРЕМЯ СУТОК! :)
 ⿻${prefix}leavest _text_
 ⿻${prefix}tlight _text_
 ⿻${prefix}naruto _text_
-⿻${prefix}крестлоготип _текст_
+⿻${prefix}crosslogo _text_
 ⿻${prefix}cslogo _text_
-⿻${prefix}рождество _текст_
+⿻${prefix}crismes _text_
 
-*СОЗДАТЕЛЬ ИЗОБРАЖЕНИЙ*
-⿻${prefix}отсутствует _текст1|текст2|текст3|@_
-⿻${prefix}календарь _ответ изображение / @_
-⿻${prefix}рисунок _ответ изображение / @_
-⿻${prefix}эскиз _ответ изображение / @_
+*IMAGEMAKER*
+⿻${prefix}missing _text1|text2|text3|@tag_
+⿻${prefix}calender _replyImage / @tag_
+⿻${prefix}drawing _replyImage / @tag_
+⿻${prefix}sketch _replyImage / @tag_
 
 *OTHER*
 ⿻${prefix}tomp3 _replyVideo_
@@ -150,17 +152,17 @@ Good ${salam} ${pushname}, ДОБРОЕ ВРЕМЯ СУТОК! :)
 
 *INFO*
 ⿻${prefix}stickermenu
-⿻${prefix}владелец
-⿻${prefix}лимит
-⿻${prefix}инфо
-⿻${prefix}листвн
+⿻${prefix}owner
+⿻${prefix}limit
+⿻${prefix}info
+⿻${prefix}listvn
 
-*ВЛАДЕЛЕЦ*
+*OWNER*
 ⿻${prefix}setpp _replyImage_
 ⿻${prefix}eval _text_
 ⿻${prefix}term _code_
-⿻${prefix}заблокировать _@tag_
-⿻${prefix}разблокировать _@tag_
+⿻${prefix}block _@tag_
+⿻${prefix}unblock _@tag_
 ⿻${prefix}join _link_
 ⿻${prefix}bc _text_
 ⿻${prefix}addvn _replyAudio/vn_
@@ -168,18 +170,18 @@ Good ${salam} ${pushname}, ДОБРОЕ ВРЕМЯ СУТОК! :)
 ⿻${prefix}premium add _@tag_
 ⿻${prefix}premium del _@tag_
 ⿻${prefix}premium list
-⿻${prefix}отчиститьвсе
-⿻${prefix}сброситьлимит
+⿻${prefix}clearall
+⿻${prefix}resetlimit
 ⿻${prefix}self
 ⿻${prefix}public
 `
 }
 
-const ingfo = `Этот бот в аренду Цена:
-1 неделя: 250
-1 месяц: 1000
-постоянный: 2000
-ЕСЛИ ИНТЕРЕСНО НАПИШИТЕ #владелец
+const ingfo = `Bot ini di Sewakan Harga:
+1minggu:5k
+1bulan:10k
+permanen:20k
+JIKA MINAT KETIK #owner
 `
 
 const listCode = `Kode bahasa jgviy tidak ada\n  Code       Bahasa\n    sq        Albanian\n    ar        Arabic\n    hy        Armenian\n    ca        Catalan\n    zh        Chinese\n    zh-cn     Chinese (China)\n    zh-tw     Chinese (Taiwan)\n    zh-yue    Chinese (Cantonese)\n    hr        Croatian\n    cs        Czech\n    da        Danish\n    nl        Dutch\n    en        English\n    en-au     English (Australia)\n    en-uk     English (United Kingdom)\n    en-us     English (United States)\n    eo        Esperanto\n    fi        Finnish\n    fr        French\n    de        German\n    el        Greek\n    ht        Haitian Creole\n    hi        Hindi\n    hu        Hungarian\n    is        Icelandic\n    id        Indonesian\n    it        Italian\n    ja        Japanese\n    ko        Korean\n    la        Latin\n    lv        Latvian\n    mk        Macedonian\n    no        Norwegian\n    pl        Polish\n    pt        Portuguese\n    pt-br     Portuguese (Brazil)\n    ro        Romanian\n    ru        Russian\n    sr        Serbian\n    sk        Slovak\n    es        Spanish\n    es-es     Spanish (Spain)\n    es-us     Spanish (United States)\n    sw        Swahili\n    sv        Swedish\n    ta        Tamil\n    th        Thai\n    tr        Turkish\n    vi        Vietnamese\n    cy        Welsh\n    `
