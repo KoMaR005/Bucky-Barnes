@@ -727,7 +727,7 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             if(data.mentionedJidList.length == 0) return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ @tag ]*\nContoh : ${data.prefix}${data.command} @0`)
-            client.groupMakeAdmin(data.from, data.mentionedJidList).then(() => data.reply(`Запрос принят, добавлен @${data.mentionedJidList.join(' @').replace(/@s.whatsapp.net/g, '')} sebagai admin.`)).catch(() => data.reply('Gagal!'))
+            client.groupMakeAdmin(data.from, data.mentionedJidList).then(() => data.reply(`Запрос принят, добавлен @${data.mentionedJidList.join(' @').replace(/@s.whatsapp.net/g, '')} как администратор.`)).catch(() => data.reply('Gagal!'))
         })
         Client.cmd.on('снятьадмина', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
@@ -898,15 +898,16 @@ module.exports = handle = (client, Client) => {
                 t
             } = data
             switch(command.toLowerCase()) {
-				case 'self':
+				case 'личный':
 					if (!isOwner) return data.reply(mess.ownerOnly)
-					if (Client.self) return data.reply('Already Self Mode')
+					if (Client.self) return data.reply('
+                    Уже личный режим')
 					Client.self = true
 					data.reply('OK')
 				break
-				case 'public':
+				case 'публичный':
 					if (!isOwner) return data.reply(mess.ownerOnly)
-					if (!Client.self) return data.reply('Already Public Mode')
+					if (!Client.self) return data.reply('Уже публичный режим')
 					Client.self = false
 					data.reply('OK')
 				break
@@ -929,7 +930,7 @@ module.exports = handle = (client, Client) => {
                                      {
                                        buttonId: `${data.prefix}info`,
                                        buttonText: {
-                                          displayText: "SEWA"
+                                          displayText: "АРЕНДОВАТЬ"
                                         },
                                          "type": "RESPONSE"
                                      },
@@ -948,12 +949,12 @@ module.exports = handle = (client, Client) => {
                 	client.relayWAMessage(zz, {waitForAck: true})     
                     break
                     /*СТИКЕРЫ*/
-                case 'sgif':
+                case 'сгиф':
                 case 'стикер':
                 case 's':
                 case 'стикер':
-                case 'stickergif':
-                case 'stikergif':
+                case 'стикергиф':
+                case 'стикергиф':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(type != 'videoMessage' && !isQuotedVideo && !isQuotedImage && type != 'imageMessage') return data.reply('Wrong format!')
                     const getbuff = data.isQuotedVideo || data.isQuotedImage ? JSON.parse(JSON.stringify(data.message).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : data.message
@@ -969,7 +970,7 @@ module.exports = handle = (client, Client) => {
 				    const dlfilez = await client.downloadMediaMessage(getbuffz)
                     convertMp3(dlfilez).then(data =>Client.sendFileFromUrl(from, data, 'p.mp3', '', message)).catch(er => Client.reply(from, 'Unexpected error!', message))
 					break
-                case 'stikerwm':
+                case 'стикерwm':
                 case 'stickerwm':
                 case 'swm':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
@@ -982,7 +983,7 @@ module.exports = handle = (client, Client) => {
                     if(type == 'videoMessage' || isQuotedVideo) Client.sendMp4AsSticker(from, dlfiles.toString('base64'), message, { crop: false, pack: `${text[0]}`, author: `${text[1]}` })
                     else Client.sendImageAsSticker(from, dlfiles.toString('base64'), message, { pack: `${text[0]}`, author: `${text[1]}`, emojis: data.body.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g) })
                     break
-                case 'stikeremoji':
+                case 'стикерэмоджи':
                 case 'stickeremoji':
                 case 'semoji':
                     try {
@@ -1004,7 +1005,7 @@ module.exports = handle = (client, Client) => {
                     const buff = await client.downloadMediaMessage(JSON.parse(JSON.stringify(data.message).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo)
                     Client.sendWebpAsSticker(data.from, buff.toString('base64'), data.message, {pack: `${text[0]}`, author: `${text[1]}`, emojis: data.body.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g)})
                     break
-                case 'stikerfire':
+                case 'стикерфаир':
                 case 'stickerfire':
                 case 'sfire':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
@@ -1031,7 +1032,7 @@ module.exports = handle = (client, Client) => {
                             pack: `${configs.pack}`,
                             author: `${configs.author}`
                         })
-                    } else data.reply(`Wrong format!, tag someone or reply image with ${data.prefix}stickerfire`)
+                    } else data.reply(`Неверный формат!, отметьте кого-нибудь или ответьте картинкой с ${data.prefix}stickerfire`)
                     break
                 case 'stikernobg':
                 case 'stickernobg':
@@ -1060,29 +1061,29 @@ module.exports = handle = (client, Client) => {
                             pack: `${configs.pack}`,
                             author: `${configs.author}`
                         })
-                    } else data.reply(`Wrong format!, tag someone or reply image with ${data.prefix}stickerfire`)
+                    } else data.reply(`Неверный формат!, отметьте кого-нибудь или ответьте картинкой с ${data.prefix}stickerfire`)
                     break
-                    /*TEXT MAKER*/
-                case 'qrencode':
-                case 'barcode':
-                case 'bneon':
-                case 'matrix':
-                case 'breakwall':
-                case 'gneon':
-                case 'dropwater':
-                case 'tfire':
-                case 'sandw':
+                    /*СОЗДАТЕЛЬ ТЕКСТА*/
+                case 'код qren':
+                case 'штрихкод':
+                case 'бнеон'
+                case 'матрица':
+                case 'сломатьстену':
+                case 'gнеон':
+                case 'капляводы':
+                case 'tогонь':
+                case 'песок':
                 case 'epep':
-                case 'gplaybutton':
-                case 'splaybutton':
-                case 'text3dbox':
-                case 'text3d':
+                case 'gкнопкавоспроизведения':
+                case 'sкнопкавоспроизведения':
+                case 'текст3dbox':
+                case 'текст3d':
                 case 'logobp':
-                case 'leavest':
-                case 'thundertext':
-                case 'tlight':
-                case 'naruto':
-                case 'crosslogo':
+                case 'самый левый':
+                case 'громовойтекст':
+                case 'сумерки':
+                case 'наруто':
+                case 'крестлоготип':
                 case 'cslogo':
                 case 'crismes':
                 case 'flametext':
