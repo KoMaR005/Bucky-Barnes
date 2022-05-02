@@ -22,12 +22,12 @@ module.exports = handle = (client, Client) => {
                 res = await axios.get(`${configs.apiUrl}/api/ytmp4/2?apikey=${configs.zeksKey}&url=${data.body}`)
                 if(res.data.status == false) data.reply(res.data.message)
                 ytm = res.data.result
-                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+                teks = `*Данные успешно получены!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp4\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
-                Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp4`, `Video telah terkirim @${data.sender.split('@')[0]}`, data.message)
+                Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp4`, `Видео отправлено @${data.sender.split('@')[0]}`, data.message)
             } catch {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                data.reply('Ой, извините, сервер ошибся или, возможно, неверный апикей')
             }
         })
         Client.cmd.on('ytmp3', async (data) => {
@@ -1068,28 +1068,28 @@ module.exports = handle = (client, Client) => {
                         case 'bнеон':
                         case 'матрица':
                         case 'сломатьстену':
-                        case 'gneon':
-                        case 'dropwater':
-                        case 'tfire':
-                        case 'sandw':
+                        case 'gнеон':
+                        case 'капляводы':
+                        case 'tогонь':
+                        case 'песок':
                         case 'epep':
-                        case 'gplaybutton':
-                        case 'splaybutton':
-                        case 'text3dbox':
-                        case 'text3d':
-                        case 'logobp':
-                        case 'leavest':
-                        case 'thundertext':
-                        case 'tlight':
-                        case 'naruto':
-                        case 'crosslogo':
+                        case 'gкнопкавоспроизведения':
+                        case 'sкнопкавоспроизведения':
+                        case 'текст3dбокс':
+                        case 'текст3d':
+                        case 'логотипбп':
+                        case 'самыйлевый':
+                        case 'громовойтекст':
+                        case 'сумерки':
+                        case 'наруто':
+                        case 'перекрестныйлоготип':
                         case 'cslogo':
-                        case 'crismes':
-                        case 'flametext':
-                        case 'glowtext':
-                        case 'smoketext':
-                        case 'flowertext':
-                        case 'lithgtext':
+                        case 'рождество':
+                        case 'пламенныйтекст':
+                        case 'светящийсятекст':
+                        case 'дымныйтекст':
+                        case 'цветочныйтекст':
+                        case 'легкийтекст':
                         case 'nulis':
                     try {
                     if(isLimit(data.sender)) return data.reply(mess.limit)
@@ -1100,21 +1100,21 @@ module.exports = handle = (client, Client) => {
                         data.reply('error')
                     }
                     break
-                case 'wolflogo':
-                case 'logoaveng':
+                case 'логотипволка':
+                case 'логотип мстителя':
                 case 'phlogo':
-                case 'marvellogo':
-                case 'gtext':
-                case 'pubglogo':
-                case 'snowwrite':
-                case 'watercolour':
+                case 'логотип marvel':
+                case 'gтекст':
+                case 'pubgлоготип':
+                case 'снеграйт':
+                case 'акварель':
                     try {
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ teks1|teks2 ]*\nContoh : ${data.prefix}${data.command} shiro|elios`)
                     data.reply(mess.wait)
                     p = data.body
                     text = p.split('|')
-                    Client.sendFileFromUrl(from, `${configs.apiUrl}/api/${command}?apikey=${configs.zeksKey}&text1=${text[0]}&text2=${text[1]}`, 'p.jpg', `*Gambar berhasil dibuat!* @${data.sender.split('@')[0]}`, message)
+                    Client.sendFileFromUrl(from, `${configs.apiUrl}/api/${command}?apikey=${configs.zeksKey}&text1=${text[0]}&text2=${text[1]}`, 'p.jpg', `*Изображение успешно создано!* @${data.sender.split('@')[0]}`, message)
                     } catch {
                         data.reply('error')
                     }
@@ -1132,7 +1132,7 @@ module.exports = handle = (client, Client) => {
                         author: 'AUTHOR'
                     })
                     break
-                    /*SEARCHING*/
+                    /*ПОИСК*/
                 case 'playstore':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
@@ -1140,7 +1140,7 @@ module.exports = handle = (client, Client) => {
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/sgplay?apikey=${configs.zeksKey}&q=${data.body}`)
                         ttt = res.data.result
-                        var teks = `*「 PLAYSTORE 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
+                        var teks = `*「 МАГАЗИН ИГР 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
                         for(let i = 0; i < ttt.length; i++) {
                             teks += `*Title* : ${ttt[i].title}\n*Harga* : ${ttt[i].price}\n*Rate*: ${ttt[i].rating}\n*Link*: ${ttt[i].url}\n\n`
                         }
@@ -1282,7 +1282,7 @@ module.exports = handle = (client, Client) => {
                         }
                         await Client.sendFileFromUrl(from, ttt[0].img_detail[0], 'p.jpg', teks, message)
                     } catch {
-                        data.reply(`Maaf produk ${data.body} tidak ditemukan`)
+                        data.reply(`Извините продукт ${data.body} не найден`)
                     }
                     break
                 case 'igstalk':
@@ -1303,26 +1303,27 @@ module.exports = handle = (client, Client) => {
 `
                         Client.sendFileFromUrl(from, pe.profile_pic, 'p.jpg', tek, message)
                     } catch {
-                        data.reply(`Maaf username ${data.body} tidak ditemukan`)
+                        data.reply(`
+                        Извините, имя пользователя ${data.body} не найдено`)
                     }
                     break
                 case 'brainly':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}brainly [ query ]*\nContoh : ${data.prefix}brainly siapa penemu lampu`)
+                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}brainly [ query ]*\nContoh : ${data.prefix}умник кто изобрел лампу`)
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/brainly?apikey=${configs.zeksKey}&q=${data.body}&count=3`)
                         for(let i = 0; i < res.data.data.length; i++) {
                             await Client.reply(from, `Pertanyaan : ${res.data.data[i].question}\n\nJawaban : ${res.data.data[i].answer[0].text}`, message)
                         }
                     } catch {
-                        data.reply(`Maaf jawaban tidak ditemukan`)
+                        data.reply(`Извините, ответ не найден`)
                     }
                     break
                 case 'spotify':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}spotify [ lagu ]*\nContoh : ${data.prefix}spotify melukis senja`)
+                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}spotify [ lagu ]*\nContoh : ${data.prefix}картина сумерки`)
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/spotify?apikey=${configs.zeksKey}&q=${data.body}`)
                         ttt = res.data.data
@@ -1497,25 +1498,25 @@ module.exports = handle = (client, Client) => {
                     data.reply(`https://chat.whatsapp.com/${linkgc}`)
                     break
                     /*DLL*/
-                case 'stickermenu':
-                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/menus.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk menampilkan menu!', {
+                case 'стикерменю':
+                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/menus.webp'), message).then(resData => Client.sendText(from, 'используйте эту наклейку для отображения меню!', {
                         quoted: resData
                     }))
-                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/sticks.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk membuat sticker dengan cara reply image/video dengan sticker ini', {
+                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/sticks.webp'), message).then(resData => Client.sendText(from, 'используйте эту наклейку, чтобы сделать наклейку, отвечая на изображение/видео этой наклейкой', {
                         quoted: resData
                     }))
-                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/open.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk membuka group', {
+                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/open.webp'), message).then(resData => Client.sendText(from, 'используйте эту наклейку, чтобы открыть группу', {
                         quoted: resData
                     }))
-                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/close.webp'), message).then(resData => Client.sendText(from, 'gunakan sticker ini untuk menutup group', {
+                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/close.webp'), message).then(resData => Client.sendText(from, 'используйте этот стикер, чтобы закрыть группу', {
                         quoted: resData
                     }))
                     break
-                case 'tes':
-                    data.reply('auto upt')
+                case 'стандартное восточное время':
+                    data.reply('автоматическое повышение')
                     break
-                case 'return':
-		        case 'eval':
+                case 'возврат':
+		        case 'оценка':
                     if(!data.isOwner) return data.reply(mess.ownerOnly)
                     try {
                         data.reply(JSON.stringify(eval(body), null, 3))
@@ -1523,20 +1524,20 @@ module.exports = handle = (client, Client) => {
                         data.reply(ers.toString())
                     }
                     break
-		        case 'term':
+		        case 'срок':
                     if(!data.isOwner) return data.reply(mess.ownerOnly)
 					exec(data.body, (err, stdout) => {	
 				    if (err) return data.reply(err.toString())
 					if (stdout) return data.reply(stdout)
 					})
 				    break
-                case 'getquoted':
+                case 'получить цитату':
                     data.reply(JSON.stringify(message.message.extendedTextMessage.contextInfo, null, 3))
                     break
-                case 'toimg':
-                case 'togif':
-                case 'tomedia':
-                case 'toimage':
+                case 'визображение':
+                case 'сделатьгифку':
+                case 'вмедиа':
+                case 'изображать':
                     if(!isQuotedSticker) return data.reply('reply sticker!')
                     const mtdt = await data.downloadMediaQuotedMessage()
                     if(message.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.isAnimated) {
@@ -1551,8 +1552,8 @@ module.exports = handle = (client, Client) => {
                     break
             }
         })
-        //Handler Sticker Command
-        Client.handlerStick.on("*", async (datas) => {
+        //Команда стикера обработчика
+        Client.handlerStick.вкл("*", async (datas) => {
             const {
                 idStick,
                 message,
@@ -1569,11 +1570,11 @@ module.exports = handle = (client, Client) => {
                 pushname,
                 t
             } = datas
-            //console.log(`ID STICKER: ${idStick}`) //digunakan untuk mendapatkan id sticker
-            /*	Cara bikin stickercmd 
-                -ambil id sticker lewat console.log
-            	-id sticker nya dibuat case 
-                -case 'idnya': contoh ada dibawah
+            //console.log(`ID STICKER: ${idStick}`) //используется для получения идентификационной наклейки
+            /*	Как сделать стикер cmd 
+                -получить наклейку с идентификатором через console.log
+            	-идентификационная наклейка сделана в футляре 
+                -case 'id': пример ниже
             	*/
             switch(idStick) {
                 case '2.453746655066493e+123':
