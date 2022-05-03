@@ -603,13 +603,13 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
-            if(data.args[0].toLowerCase() == 'вкл') {
-                if(dataGc[data.from].antilink) return data.reply('Already on!')
+            if(data.args[0].toLowerCase() == 'on') {
+                if(dataGc[data.from].antilink) return data.reply('Уже включено!')
                 dataGc[data.from].antilink = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
-            } else if(data.args[0].toLowerCase() == 'выкл') {
-                if(!dataGc[data.from].antilink) return data.reply('Already off!')
+            } else if(data.args[0].toLowerCase() == 'off') {
+                if(!dataGc[data.from].antilink) return data.reply('Уже выключено!')
                 dataGc[data.from].antilink = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -912,7 +912,7 @@ module.exports = handle = (client, Client) => {
 				break
                 case 'command':
                 case 'cmd':
-                case 'menu':
+                case 'меню':
                 case 'help':
                 case 'list':
  	                 const mediaMsg = await client.prepareMessageMedia(await getBuffer(configs.imgUrl), 'imageMessage')
