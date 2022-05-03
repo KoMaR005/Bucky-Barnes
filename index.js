@@ -15,7 +15,7 @@ const {
     relayWAMessage,
 } = require("@adiwajshing/baileys");
 const fs = require('fs');
-const moment = require('moment-timezone');
+const moment = require('момент-часовой пояс');
 const afkJs = require('./lib/afk')
 const yargs = require('yargs/yargs')
 const vn = JSON.parse(fs.readFileSync('./lib/json/vn.json'))
@@ -25,7 +25,7 @@ global.configs = JSON.parse(fs.readFileSync('./config.json'));
 let dataUser = JSON.parse(fs.readFileSync('./lib/json/dataUser.json'))
 global.vn = JSON.parse(fs.readFileSync('./lib/json/vn.json'))
 global.tebakgambar = {}
-moment.tz.setDefault('Asia/Jakarta').locale('id');
+moment.tz.setDefault('Kazakhstan/Almaty').locale('id');
 const { color } = require('./lib/func')
 const Crypto = require('crypto')
 
