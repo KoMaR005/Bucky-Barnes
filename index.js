@@ -15,7 +15,7 @@ const {
     relayWAMessage,
 } = require("@adiwajshing/baileys");
 const fs = require('fs');
-const moment = require('момент-часовой пояс');
+const moment = require('moment-timezone');
 const afkJs = require('./lib/afk')
 const yargs = require('yargs/yargs')
 const vn = JSON.parse(fs.readFileSync('./lib/json/vn.json'))
@@ -25,7 +25,7 @@ global.configs = JSON.parse(fs.readFileSync('./config.json'));
 let dataUser = JSON.parse(fs.readFileSync('./lib/json/dataUser.json'))
 global.vn = JSON.parse(fs.readFileSync('./lib/json/vn.json'))
 global.tebakgambar = {}
-moment.tz.setDefault('Kazakhstan/Almaty').locale('id');
+moment.tz.setDefault('Asia/Jakarta').locale('id');
 const { color } = require('./lib/func')
 const Crypto = require('crypto')
 
@@ -88,7 +88,7 @@ const starts = async (sesName) => {
                 client.forwardMessage(from, msg)
             }
 			if (isGroup && !message.isAdmin && dataGc[from].antilink && /chat\.whatsapp\.com/gi.test(body)){
-				let dtclink = body.match(/chat.whatsapp.com\/(?:invite\/)?([0-9A-Za-z]{16,15})/gi) || []
+				let dtclink = body.match(/chat.whatsapp.com\/(?:invite\/)?([0-9A-Za-z]{18,26})/gi) || []
 				dtclink.forEach(async l => {
 					checks = await Client.checkInviteLink(l)
 					if(checks.status == 200){
