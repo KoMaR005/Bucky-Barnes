@@ -421,12 +421,12 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].welcome) return data.reply('Already on!')
+                if(dataGc[data.from].welcome) return data.reply('Уже включено!')
                 dataGc[data.from].welcome = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].welcome) return data.reply('Already off!')
+                if(!dataGc[data.from].welcome) return data.reply('Уже выключено!')
                 dataGc[data.from].welcome = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -491,12 +491,12 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].leave) return data.reply('Already on!')
+                if(dataGc[data.from].leave) return data.reply('Уже включено!')
                 dataGc[data.from].leave = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].leave) return data.reply('Already off!')
+                if(!dataGc[data.from].leave) return data.reply('Уже выключено!')
                 dataGc[data.from].leave = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -528,12 +528,12 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].antiviewonce) return data.reply('Already on!')
+                if(dataGc[data.from].antiviewonce) return data.reply('Уже включено!')
                 dataGc[data.from].antiviewonce = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].antiviewonce) return data.reply('Already off!')
+                if(!dataGc[data.from].antiviewonce) return data.reply('Уже выключено!')
                 dataGc[data.from].antiviewonce = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -566,12 +566,12 @@ module.exports = handle = (client, Client) => {
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].antitagall) return data.reply('Already on!')
+                if(dataGc[data.from].antitagall) return data.reply('Уже включено!')
                 dataGc[data.from].antitagall = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].antitagall) return data.reply('Already off!')
+                if(!dataGc[data.from].antitagall) return data.reply('Уже выключено!')
                 dataGc[data.from].antitagall = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
