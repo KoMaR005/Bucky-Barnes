@@ -43,7 +43,7 @@ module.exports = handle = (client, Client) => {
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp3`, ``, data.message)
             } catch {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                data.reply('Ой, извините, сервер ошибся или, возможно, неверный апикей')
             }
         })
         Client.cmd.on('playvid', async (data) => {
@@ -59,7 +59,7 @@ module.exports = handle = (client, Client) => {
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, 'video.mp4', `Video telah terkirim @${data.sender.split('@')[0]}`, data.message)
             } catch (e) {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                data.reply('Ой, извините, сервер ошибся или, возможно, неверный апикей')
             }
         })
         Client.cmd.on('play', async (data) => {
@@ -75,7 +75,7 @@ module.exports = handle = (client, Client) => {
                 Client.sendFileFromUrl(data.from, ytm.thumb, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, ytm.link, `${ytm.title} - Download.mp3`, ``, data.message)
             } catch {
-                data.reply('Ups maaf server sedang error atau mungkin apikey invalid')
+                data.reply('Ой, извините, сервер ошибся или, возможно, неверный апикей')
             }
         })
         Client.cmd.on('ig', async (data) => {
@@ -166,7 +166,7 @@ module.exports = handle = (client, Client) => {
         })
         Client.cmd.on('limit', async (data) => {
             const dataUser = JSON.parse(fs.readFileSync('./lib/json/dataUser.json'))
-            if(dataUser[data.sender].premium) return data.reply(`Hai @${data.sender.split('@')[0]} 👋🏻\nAnda adalah user premium yang memiliki akses tanpa batas limit!`)
+            if(dataUser[data.sender].premium) return data.reply(`Привет @${data.sender.split('@')[0]} 👋🏻\nAnda adalah user premium yang memiliki akses tanpa batas limit!`)
             limits = configs.maxLimit - dataUser[data.sender].limit
             if(limits <= 0) return data.reply("```" + `Limit anda sudah habis` + "```")
             data.reply(`Hai @${data.sender.split('@')[0]} 👋🏻\n Limit anda tersisa ${limits || 30}\nLimit setiap hari di reset jam 00.00\nJika anda ingin mendapatkan unlimited limit silahkan chat owner bot ketik !owner`)
@@ -181,7 +181,7 @@ module.exports = handle = (client, Client) => {
 			const mediaMsg = await client.prepareMessageMedia(await getBuffer(res.data.url), 'imageMessage')
             const buttonMessage = {
 			      contentText: 'Waifu',
-				  footerText: 'Press the button below to get a random waifu image',
+				  footerText: 'Нажмите кнопку ниже, чтобы получить случайное изображение вайфу',
                         "contextInfo": {
                               participant: data.sender,
                               stanzaId: data.message.key.id,
