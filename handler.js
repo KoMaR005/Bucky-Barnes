@@ -603,12 +603,12 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
-            if(data.args[0].toLowerCase() == 'вкл') {
+            if(data.args[0].toLowerCase() == 'on') {
                 if(dataGc[data.from].antilink) return data.reply('Already on!')
                 dataGc[data.from].antilink = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
-            } else if(data.args[0].toLowerCase() == 'выкл') {
+            } else if(data.args[0].toLowerCase() == 'off') {
                 if(!dataGc[data.from].antilink) return data.reply('Already off!')
                 dataGc[data.from].antilink = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
@@ -758,7 +758,7 @@ module.exports = handle = (client, Client) => {
             console.log(client)
         })
         /*СОЗДАТЕЛЬ ИЗОБРАЖЕНИЙ*/
-        Client.cmd.on('отсутствует', async (data) => {
+        Client.cmd.on('розыск', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             data.reply(mess.wait)
             if(data.isQuotedImage || data.type == 'imageMessage') {
@@ -1026,7 +1026,7 @@ module.exports = handle = (client, Client) => {
                         })
                     } else if(data.mentionedJidList.length > 0) {
                         ppUrl = await client.getProfilePicture(data.mentionedJidList[0])
-                        if(!ppUrl) return data.reply('Profile picture not found!')
+                        if(!ppUrl) return data.reply('Фотография профиля не найдена!')
                         Client.sendStickerFromUrl(data.from, `${configs.apiUrl}/api/burning-image?apikey=${configs.zeksKey}&image=${encodeURIComponent(ppUrl)}`, data.message, {
                             pack: `${configs.pack}`,
                             author: `${configs.author}`
@@ -1055,7 +1055,7 @@ module.exports = handle = (client, Client) => {
                         })
                     } else if(data.mentionedJidList.length > 0) {
                         ppUrl = await client.getProfilePicture(data.mentionedJidList[0])
-                        if(!ppUrl) return data.reply('Profile picture not found!')
+                        if(!ppUrl) return data.reply('Фотография профиля не найдена!')
                         Client.sendStickerFromUrl(data.from, `${configs.apiUrl}/api/removebg?apikey=${configs.zeksKey}&image=${encodeURIComponent(ppUrl)}`, data.message, {
                             pack: `${configs.pack}`,
                             author: `${configs.author}`
@@ -1101,9 +1101,9 @@ module.exports = handle = (client, Client) => {
                     }
                     break
                 case 'логотипволка':
-                case 'логотип мстителя':
+                case 'логотипмстителя':
                 case 'phlogo':
-                case 'логотип marvel':
+                case 'логотипmarvel':
                 case 'gтекст':
                 case 'pubgлоготип':
                 case 'снеграйт':
@@ -1205,14 +1205,14 @@ module.exports = handle = (client, Client) => {
                         data.reply(`Maaf aplikasi MOD ${data.body} tidak ditemukan`)
                     }
                     break
-                case 'iguser':
+                case 'igпользователь':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
                         if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}iguser [ username ]*\nContoh : ${data.prefix}iguser jessnolimit`)
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/iguser?apikey=${configs.zeksKey}&q=${data.body}`)
                         ttt = res.data.result
-                        var teks = `*「 INSTAGRAM USER 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
+                        var teks = `*「 INSTAGRAM ПОЛЬЗОВАТЕЛЬ 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
                         for(let i = 0; i < ttt.length; i++) {
                             teks += `*Username* : ${ttt[i].username}\n*Full name*: ${ttt[i].full_name}\n*Akun private* : ${ttt[i].private_user}\n*Verified*: ${ttt[i].verified_user}\n*Link*: https://instagram.com/${ttt[i].username}\n\n`
                         }
