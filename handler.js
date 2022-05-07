@@ -334,12 +334,12 @@ module.exports = handle = (client, Client) => {
             var ext = data.isQuotedImage ? 'jpg' : 'mp4'
             list.forEach(async dataC => {
                 if(mediaBuffer) Client.sendFileFromBase64(dataC.jid, mediaBuffer.toString('base64'), `bc.${ext}`, `*BOT BROADCAST*\n\n${data.body} ${dataC.jid.endsWith('@g.us') ?'\n\n_#izin admin grup _*'+dataC.name+'*_' : ''}`)
-                else Client.sendText(dataC.jid, `*BOT BROADCAST*\n\n${data.body}\n\n_#izin admin grup *${dataC.name}*_`)
+                else Client.sendText(dataC.jid, `*БОТ ТРАНСЛЯЦИЯ*\n\n${data.body}\n\n_#izin admin grup *${dataC.name}*_`)
             })
         })
-        Client.cmd.on('join', async (data) => {
+        Client.cmd.on('присоединиться', async (data) => {
             if(!data.isOwner) return data.reply(mess.ownerOnly)
-            if(data.body == "") return data.reply(`Link nya?`)
+            if(data.body == "") return data.reply(`ссылка?`)
             Client.acceptInviteLink(data.body).then(() => data.reply('ok')).catch(() => data.reply('failed'))
         })
         Client.cmd.on('владелец', async (data) => {
@@ -351,7 +351,7 @@ module.exports = handle = (client, Client) => {
             dataToPr = data.mentionedJidList.length ? data.mentionedJidList : [data.args[1] + "@s.whatsapp.net"] || null
 
             if(data.args[0].toLowerCase() == 'дать') {
-                if(data.args.length < 2) return data.reply('what?')
+                if(data.args.length < 2) return data.reply('какие?')
                 dataToPr.forEach(nums => {
                     if(!dataUser[nums]) dataUser[nums] = {
                         limit: 0
@@ -359,21 +359,21 @@ module.exports = handle = (client, Client) => {
                     dataUser[nums].premium = true
                 })
                 fs.writeFileSync('./lib/json/dataUser.json', JSON.stringify(dataUser))
-                data.reply(`Berhasil menambahkan user premium @${dataToPr.join(' @').replace(/@s.whatsapp.net/g, '')}`)
-            } else if(data.args[0].toLowerCase() == 'del') {
-                if(data.args.length < 2) return data.reply('what?')
+                data.reply(`Успешно добавлен премиум-пользователь @${dataToPr.join(' @').replace(/@s.whatsapp.net/g, '')}`)
+            } else if(data.args[0].toLowerCase() == 'удалить') {
+                if(data.args.length < 2) return data.reply('какие?')
                 dataToPr.forEach(nums => {
                     if(!dataUser[nums] || !dataUser[nums].premium) return data.reply(`User @${nums.split('@')[0]} not premium!`)
                     dataUser[nums].premium = false
-                    data.reply(`berasil menghapus user premium @${nums.split('@')[0]}`)
+                    data.reply(`успешно удален премиум-пользователь @${nums.split('@')[0]}`)
                 })
                 fs.writeFileSync('./lib/json/dataUser.json', JSON.stringify(dataUser))
             } else if(data.args[0].toLowerCase() == 'list') {
-                strings = `LIST PREMIUM\n\n`
+                strings = `СПИСОК ПРЕМИУМ\n\n`
                 for(var [num, val] of Object.entries(dataUser))
                     if(val.premium) strings += `~> @${num.split('@')[0]}\n`
                 data.reply(strings)
-            } else data.reply(`do u need example?\n\nExample:\n${data.prefix}premium add @0 \nor\n${data.prefix}premium add 62xxxx`)
+            } else data.reply(`тебе нужны примеры?\n\nExample:\n${data.prefix}premium add @0 \nor\n${data.prefix}premium add 62xxxx`)
         })
         /*NEWS*/
         Client.cmd.on('tribunnews', async (data) => {
@@ -409,7 +409,7 @@ module.exports = handle = (client, Client) => {
             }
             await Client.sendFileFromUrl(data.from, ttt[0].thumb, 'p.jpg', teks, data.message)
         })
-        /*GROUP*/
+        /*ГРУППА*/
         Client.cmd.on('afk', (data) => {
             if(!data.isGroup) return data.reply(mess.group)
             timesNow = moment(data.t * 1000).format('YYYY-MM-DD HH:mm:ss')
@@ -421,12 +421,12 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].welcome) return data.reply('Already on!')
+                if(dataGc[data.from].welcome) return data.reply('Уже включено!')
                 dataGc[data.from].welcome = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].welcome) return data.reply('Already off!')
+                if(!dataGc[data.from].welcome) return data.reply('Уже выключено!')
                 dataGc[data.from].welcome = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -466,21 +466,21 @@ module.exports = handle = (client, Client) => {
                         "rows": [
                            {
                               "title": "MP3",
-							  description: `Title: ${xres.video.title}\n\nUploader: ${xres.uploader.username}`,
+							  description: `Title: ${xres.video.title}\n\nЗагрузчик: ${xres.uploader.username}`,
                               "rowId": `${data.prefix}ytmp3 ${xres.video.url}`
                            },
 						   {
                               "title": "MP4",
-							  description: `Title: ${xres.video.title}\n\nUploader: ${xres.uploader.username}`,
+							  description: `Title: ${xres.video.title}\n\nЗагрузчик: ${xres.uploader.username}`,
                               "rowId": `${data.prefix}ytmp4 ${xres.video.url}`
                            }
                         ], title: i+1})
 			})
 			let po = client.prepareMessageFromContent(data.from, {
 				  "listMessage":{
-                  "title": "*YOUTUBE DOWNLOAD*",
-                  "description": `*Result for : ${data.body}*\n*Download video by click button bellow*`,
-                  "buttonText": "Result",
+                  "title": "*ЮТУБ ЗАГРУЗКИ*",
+                  "description": `*Результат для: ${data.body}*\n*Загрузить видео, нажав кнопку ниже*`,
+                  "buttonText": "Результат",
                   "listType": "SINGLE_SELECT",
                   "sections": secs}}, {}) 
             client.relayWAMessage(po, {waitForAck: true})	
@@ -491,12 +491,12 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].leave) return data.reply('Already on!')
+                if(dataGc[data.from].leave) return data.reply('Уже включено!')
                 dataGc[data.from].leave = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].leave) return data.reply('Already off!')
+                if(!dataGc[data.from].leave) return data.reply('Уже выключено!')
                 dataGc[data.from].leave = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -528,12 +528,12 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].antiviewonce) return data.reply('Already on!')
+                if(dataGc[data.from].antiviewonce) return data.reply('Уже включено!')
                 dataGc[data.from].antiviewonce = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].antiviewonce) return data.reply('Already off!')
+                if(!dataGc[data.from].antiviewonce) return data.reply('Уже выключено!')
                 dataGc[data.from].antiviewonce = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -566,12 +566,12 @@ module.exports = handle = (client, Client) => {
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].antitagall) return data.reply('Already on!')
+                if(dataGc[data.from].antitagall) return data.reply('Уже включено!')
                 dataGc[data.from].antitagall = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].antitagall) return data.reply('Already off!')
+                if(!dataGc[data.from].antitagall) return data.reply('Уже выключено!')
                 dataGc[data.from].antitagall = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -604,12 +604,12 @@ module.exports = handle = (client, Client) => {
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].antilink) return data.reply('Already on!')
+                if(dataGc[data.from].antilink) return data.reply('Уже включено!')
                 dataGc[data.from].antilink = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].antilink) return data.reply('Already off!')
+                if(!dataGc[data.from].antilink) return data.reply('Уже выключено!')
                 dataGc[data.from].antilink = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -1214,7 +1214,7 @@ module.exports = handle = (client, Client) => {
                         ttt = res.data.result
                         var teks = `*「 INSTAGRAM ПОЛЬЗОВАТЕЛЬ 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
                         for(let i = 0; i < ttt.length; i++) {
-                            teks += `*Username* : ${ttt[i].username}\n*Full name*: ${ttt[i].full_name}\n*Akun private* : ${ttt[i].private_user}\n*Verified*: ${ttt[i].verified_user}\n*Link*: https://instagram.com/${ttt[i].username}\n\n`
+                            teks += `*Имяпользователя* : ${ttt[i].username}\n*Full name*: ${ttt[i].full_name}\n*Akun private* : ${ttt[i].private_user}\n*Verified*: ${ttt[i].verified_user}\n*Link*: https://instagram.com/${ttt[i].username}\n\n`
                         }
                         await Client.sendFileFromUrl(from, ttt[0].profile_pic, 'p.jpg', teks, message)
                     } catch {
