@@ -23,7 +23,7 @@ module.exports = handle = (client, Client) => {
                 if(res.data.status == false) data.reply(res.data.message)
                 ytm = res.data.result
                 teks = `*Данные успешно получены!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
-                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Данные успешно получены!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp4\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
+                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp4\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp4`, `Видео отправлено @${data.sender.split('@')[0]}`, data.message)
             } catch {
@@ -38,15 +38,15 @@ module.exports = handle = (client, Client) => {
                 res = await axios.get(`${configs.apiUrl}/api/ytmp3/2?apikey=${configs.zeksKey}&url=${data.body}`)
                 if(res.data.status == false) data.reply(res.data.message)
                 ytm = res.data.result
-                teks = `*Данные успешно получены!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
-                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Данные успешно получены!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp3\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
+                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp3\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp3`, ``, data.message)
             } catch {
                 data.reply('Ой, извините, сервер ошибся или, возможно, неверный апикей')
             }
         })
-        Client.cmd.on('проигратьвидео', async (data) => {
+        Client.cmd.on('playvid', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
                 if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}playvid [ query ]*\nContoh : ${data.prefix}playvid amv`)
@@ -54,8 +54,8 @@ module.exports = handle = (client, Client) => {
                 res = await axios.get(`${configs.apiUrl}/api/ytplaymp4/2?apikey=${configs.zeksKey}&q=${data.body}`)
                 if(res.data.status == false) data.reply(res.data.message)
                 ytm = res.data.result
-                teks = `*Данные успешно получены!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*Source* : ${ytm.source}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
-                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Данные успешно получены!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp4\n*Source* : ${ytm.source}\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
+                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*Source* : ${ytm.source}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp4\n*Source* : ${ytm.source}\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, 'video.mp4', `Video telah terkirim @${data.sender.split('@')[0]}`, data.message)
             } catch (e) {
@@ -70,8 +70,8 @@ module.exports = handle = (client, Client) => {
                 res = await axios.get(`${configs.apiUrl}/api/ytplaymp3/2?apikey=${configs.zeksKey}&q=${data.body}`)
                 if(res.data.status == false) data.reply(res.data.message)
                 ytm = res.data.result
-                teks = `*Данные успешно получены!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*Source* : ${ytm.source}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
-                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Данные успешно получены!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp3\n*Source* : ${ytm.source}\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
+                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*Source* : ${ytm.source}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+                if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp3\n*Source* : ${ytm.source}\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
                 Client.sendFileFromUrl(data.from, ytm.thumb, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, ytm.link, `${ytm.title} - Download.mp3`, ``, data.message)
             } catch {
@@ -110,7 +110,7 @@ module.exports = handle = (client, Client) => {
                 res = await axios.get(`${configs.apiUrl}/api/joox?apikey=${configs.zeksKey}&q=${data.body}`)
                 if(res.data.status == false) data.reply(jox.data.message)
                 jox = res.data.data[0]
-                teks = `*Данные успешно получены!*\n\n*Judul* : ${jox.judul}\n*Artis* : ${jox.artist}\n*Album* : ${jox.album}\n*Ukuran* : ${jox.size}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${jox.judul}\n*Artis* : ${jox.artist}\n*Album* : ${jox.album}\n*Ukuran* : ${jox.size}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 Client.sendFileFromUrl(data.from, `${jox.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${jox.audio}`, 'audio.mp3', ``, data.message)
             } catch {
@@ -421,12 +421,12 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].welcome) return data.reply('Уже включено!')
+                if(dataGc[data.from].welcome) return data.reply('Already on!')
                 dataGc[data.from].welcome = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].welcome) return data.reply('Уже выключено!')
+                if(!dataGc[data.from].welcome) return data.reply('Already off!')
                 dataGc[data.from].welcome = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -491,12 +491,12 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].leave) return data.reply('Уже включено!')
+                if(dataGc[data.from].leave) return data.reply('Already on!')
                 dataGc[data.from].leave = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].leave) return data.reply('Уже выключено!')
+                if(!dataGc[data.from].leave) return data.reply('Already off!')
                 dataGc[data.from].leave = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -528,12 +528,12 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].antiviewonce) return data.reply('Уже включено!')
+                if(dataGc[data.from].antiviewonce) return data.reply('Already on!')
                 dataGc[data.from].antiviewonce = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].antiviewonce) return data.reply('Уже выключено!')
+                if(!dataGc[data.from].antiviewonce) return data.reply('Already off!')
                 dataGc[data.from].antiviewonce = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -566,12 +566,12 @@ module.exports = handle = (client, Client) => {
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
             if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].antitagall) return data.reply('Уже включено!')
+                if(dataGc[data.from].antitagall) return data.reply('Already on!')
                 dataGc[data.from].antitagall = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
             } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].antitagall) return data.reply('Уже выключено!')
+                if(!dataGc[data.from].antitagall) return data.reply('Already off!')
                 dataGc[data.from].antitagall = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -603,13 +603,13 @@ module.exports = handle = (client, Client) => {
             if(!data.isAdmin) return data.reply(mess.admin)
             if(!data.botIsAdmin) return data.reply(mess.botAdmin)
             const dataGc = JSON.parse(fs.readFileSync('./lib/json/dataGc.json'))
-            if(data.args[0].toLowerCase() == 'on') {
-                if(dataGc[data.from].antilink) return data.reply('Уже включено!')
+            if(data.args[0].toLowerCase() == 'вкл') {
+                if(dataGc[data.from].antilink) return data.reply('Already on!')
                 dataGc[data.from].antilink = true
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Выполнено!')
-            } else if(data.args[0].toLowerCase() == 'off') {
-                if(!dataGc[data.from].antilink) return data.reply('Уже выключено!')
+            } else if(data.args[0].toLowerCase() == 'выкл') {
+                if(!dataGc[data.from].antilink) return data.reply('Already off!')
                 dataGc[data.from].antilink = false
                 fs.writeFileSync('./lib/json/dataGc.json', JSON.stringify(dataGc))
                 data.reply('Sukses!')
@@ -758,7 +758,7 @@ module.exports = handle = (client, Client) => {
             console.log(client)
         })
         /*СОЗДАТЕЛЬ ИЗОБРАЖЕНИЙ*/
-        Client.cmd.on('розыск', async (data) => {
+        Client.cmd.on('отсутствует', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             data.reply(mess.wait)
             if(data.isQuotedImage || data.type == 'imageMessage') {
@@ -912,7 +912,7 @@ module.exports = handle = (client, Client) => {
 				break
                 case 'command':
                 case 'cmd':
-                case 'меню':
+                case 'menu':
                 case 'help':
                 case 'list':
  	                 const mediaMsg = await client.prepareMessageMedia(await getBuffer(configs.imgUrl), 'imageMessage')
@@ -1212,16 +1212,16 @@ module.exports = handle = (client, Client) => {
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/iguser?apikey=${configs.zeksKey}&q=${data.body}`)
                         ttt = res.data.result
-                        var teks = `*「 INSTAGRAM Пользователь 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
+                        var teks = `*「 INSTAGRAM USER 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
                         for(let i = 0; i < ttt.length; i++) {
                             teks += `*Username* : ${ttt[i].username}\n*Full name*: ${ttt[i].full_name}\n*Akun private* : ${ttt[i].private_user}\n*Verified*: ${ttt[i].verified_user}\n*Link*: https://instagram.com/${ttt[i].username}\n\n`
                         }
                         await Client.sendFileFromUrl(from, ttt[0].profile_pic, 'p.jpg', teks, message)
                     } catch {
-                        data.reply(`К сожалению, имя пользователя ${data.body} не найдено`)
+                        data.reply(`Maaf username ${data.body} tidak ditemukan`)
                     }
                     break
-                case 'ютубпоиск':
+                case 'ytsearch':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
                         if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}ytsearch [ query ]*\nContoh : ${data.prefix}ytsearch jessnolimit`)
@@ -1253,250 +1253,250 @@ module.exports = handle = (client, Client) => {
                         data.reply(`Maaf pencarian ${data.body} tidak ditemukan`)
                     }
                     break
-                    case 'ytchannel':
-                        try {
-                            if(isLimit(data.sender)) return data.reply(mess.limit)
-                            if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}ytchannel [ channel ]*\nContoh : ${data.prefix}ytchannel jessnolimit`)
-                            data.reply(mess.wait)
-                            res = await axios.get(`${configs.apiUrl}/api/ytchannel?apikey=${configs.zeksKey}&q=${data.body}`)
-                            ttt = res.data.result
-                            var eks = `*「 YOUTUBE CHANNEL 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
-                            for(let i = 0; i < ttt.length; i++) {
-                                eks += `*Nama* : ${ttt[i].title}\n*Deskripsi*: ${ttt[i].description}\n*Verified* : ${ttt[i].verified}\n*Jumlah video*: ${ttt[i].video_count}\n*Subcriber*: ${ttt[i].subscriber_count}\n*Link*: ${ttt[i].url}\n\n`
-                            }
-                            await Client.sendFileFromUrl(from, ttt[0].thumbnail, 'axis.jpg', eks, message)
-                        } catch(e) {
-                            data.reply(`Maaf pencarian ${data.body} tidak ditemukan`)
-                        }
-                        break
-                    case 'shopee':
-                        try {
-                            if(isLimit(data.sender)) return data.reply(mess.limit)
-                            if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}shopee [ query ]*\nContoh : ${data.prefix}shopee sepatu`)
-                            data.reply(mess.wait)
-                            res = await axios.get(`${configs.apiUrl}/api/shopee?apikey=${configs.zeksKey}&q=${data.body}`)
-                            ttt = res.data.data
-                            var teks = `*「 SHOPEE 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
-                            for(let i = 0; i < ttt.length; i++) {
-                                teks += `*Nama* : ${ttt[i].name}\n*Harga*: ${ttt[i].harga}\n*Terjual* : ${ttt[i].terjual}\n*Lokasi*: ${ttt[i].location}\n*Deskripsi*: ${ttt[i].desc}\n*Stok*: ${ttt[i].stock}\n*Informasi*: ${ttt[i].information}\n*Link*: ${ttt[i].url}\n\n`
-                            }
-                            await Client.sendFileFromUrl(from, ttt[0].img_detail[0], 'p.jpg', teks, message)
-                        } catch {
-                            data.reply(`Извините продукт ${data.body} не найден`)
-                        }
-                        break
-                    case 'igstalk':
-                        try {
-                            if(isLimit(data.sender)) return data.reply(mess.limit)
-                            if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}igstalk [ query ]*\nContoh : ${data.prefix}igstalk elios_xyz`)
-                            data.reply(mess.wait)
-                            res = await axios.get(`${configs.apiUrl}/api/igstalk?apikey=${configs.zeksKey}&username=${data.body}`)
-                            pe = res.data
-                            tek = `*「 INSTAGRAM PROFILE 」*	
-                        
-    *Username:* @${pe.username}
-    *Nama:* ${pe.fullname}
-    *Pengikut:* ${pe.follower}
-    *Mengikuti*: ${pe.following}
-    *Deskripsi:* ${pe.bio}
-    *Link:* https://instagram.com/${pe.username}
-    `
-                            Client.sendFileFromUrl(from, pe.profile_pic, 'p.jpg', tek, message)
-                        } catch {
-                            data.reply(`
-                            Извините, имя пользователя ${data.body} не найдено`)
-                        }
-                        break
-                    case 'brainly':
-                        try {
-                            if(isLimit(data.sender)) return data.reply(mess.limit)
-                            if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}brainly [ query ]*\nContoh : ${data.prefix}умник кто изобрел лампу`)
-                            data.reply(mess.wait)
-                            res = await axios.get(`${configs.apiUrl}/api/brainly?apikey=${configs.zeksKey}&q=${data.body}&count=3`)
-                            for(let i = 0; i < res.data.data.length; i++) {
-                                await Client.reply(from, `Pertanyaan : ${res.data.data[i].question}\n\nJawaban : ${res.data.data[i].answer[0].text}`, message)
-                            }
-                        } catch {
-                            data.reply(`Извините, ответ не найден`)
-                        }
-                        break
-                    case 'spotify':
-                        try {
-                            if(isLimit(data.sender)) return data.reply(mess.limit)
-                            if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}spotify [ lagu ]*\nContoh : ${data.prefix}картина сумерки`)
-                            data.reply(mess.wait)
-                            res = await axios.get(`${configs.apiUrl}/api/spotify?apikey=${configs.zeksKey}&q=${data.body}`)
-                            ttt = res.data.data
-                            var teks = `*「 SPOTIFY 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
-                            for(let i = 0; i < ttt.length; i++) {
-                                teks += `*Judul* : ${ttt[i].title}\n*Artis*: ${ttt[i].artists}\n*Album* : ${ttt[i].album}\n*Link*: ${ttt[i].url}\n*Preview*: ${ttt[i].preview_mp3}\n\n`
-                            }
-                            await Client.sendFileFromUrl(from, ttt[0].thumb, 'p.jpg', teks, message)
-                        } catch {
-                            data.reply(`Maaf lagu ${data.body} tidak ditemukan`)
-                        }
-                        break
-                    case 'gsmarena':
-                        try {
-                            if(isLimit(data.sender)) return data.reply(mess.limit)
-                            if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}gsmarena [ hp ]*\nContoh : ${data.prefix}gsmarena asus rog phone 3`)
-                            data.reply(mess.wait)
-                            res = await axios.get(`${configs.apiUrl}/api/gsmArena?apikey=${configs.zeksKey}&q=${data.body}`)
-                            captions = `*HP* : ${res.data.data.title}\n\n${res.data.data.full_desc.string}\n${res.data.data.link}`
-                            Client.sendFileFromUrl(from, res.data.data.thumb, 'p.jpg', captions, message)
-                        } catch (e) {
-                            data.reply(`Maaf hp ${data.body} tidak ditemukan`)
-                        }
-                        break
-                    case 'searchmusic':
-                    case 'searchmusik':
+                case 'ytchannel':
+                    try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.isQuotedAudio) {
-                            files = await client.downloadMediaMessage(JSON.parse(JSON.stringify(message).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo)
-                            bodyForm = new FormData()
-                            bodyForm.append('audio', files, 'music.mp3')
-                            axios(`${configs.apiUrl}/api/searchmusic?apikey=${configs.zeksKey}`, {
-                                    method: 'POST',
-                                    headers: {
-                                        ...bodyForm.getHeaders()
-                                    },
-                                    data: bodyForm.getBuffer()
-                                })
-                                .then(({
-                                    data
-                                }) => {
-                                    if(data.status) {
-                                        Client.reply(from, `_[ *Search Music* ]_\n\n*Title*: ${data.data.title}\n*Artists*: ${data.data.artists}\n*Genre*: ${data.data.genre}\n*Album*: ${data.data.album}\n*Release date*: ${data.data.release_date}`, message)
-                                    } else Client.reply(from, data.message, message)
-                                }).catch(() => Client.reply(from, 'Internal server error!, try again later', message))
-                        } else Client.reply(from, 'Wrong format!', message)
-                        break
-                    case 'wallpaper':
-                        try{
-                        if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}wallpaper [ query ]*\nContoh : ${data.prefix}wallpaper kucing`)
+                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}ytchannel [ channel ]*\nContoh : ${data.prefix}ytchannel jessnolimit`)
                         data.reply(mess.wait)
-                        res = await axios.get(`${configs.apiUrl}/api/unsplash?apikey=${configs.zeksKey}&q=${data.body}`)
-                        if(res.data.status == false) data.reply(res.data.message)
-                        n = res.data.result
-                        image = n[Math.floor(Math.random() * n.length)]
-                        Client.sendFileFromUrl(from, image.img_hd, 'p.jpg', `*Hasil pecarian* : ${data.body}`, message)
-                        } catch {
-                            data.reply(`error`)
-                        }
-                        break
-                    case 'pinterest':
-                        try{
-                        if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}pinterest [ query ]*\nContoh : ${data.prefix}pinterest kucing`)
-                        data.reply(mess.wait)
-                        res = await axios.get(`${configs.apiUrl}/api/pinimg?apikey=${configs.zeksKey}&q=${data.body}`)
-                        n = res.data.data
-                        image = n[Math.floor(Math.random() * n.length)]
-                        Client.sendFileFromUrl(from, image, 'p.jpg', `*Hasil pecarian* : ${data.body}`, message)
-                        } catch {
-                            data.reply(`error`)
-                        }
-                        break
-                    case 'googleimage':
-                        try{
-                        if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}googleimage [ query ]*\nContoh : ${data.prefix}googleimage kucing`)
-                        data.reply(mess.wait)
-                        res = await axios.get(`${configs.apiUrl}/api/gimg?apikey=${configs.zeksKey}&q=${data.body}`)
-                        n = res.data.data
-                        image = n[Math.floor(Math.random() * n.length)]
-                        Client.sendFileFromUrl(from, image, 'p.jpg', `*Hasil pecarian* : ${data.body}`, message)
-                        } catch {
-                            data.reply(`error`)
-                        }
-                        break
-                    case 'jagokata':
-                        if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}jagokata [ apk ]*\nContoh : ${data.prefix}jagokata bersyukurlah`)
-                        data.reply(mess.wait)
-                        res = await axios.get(`${configs.apiUrl}/api/jagokata?apikey=${configs.zeksKey}&q=${data.body}`)
-                        if(res.data.status == false) data.reply(res.data.message)
+                        res = await axios.get(`${configs.apiUrl}/api/ytchannel?apikey=${configs.zeksKey}&q=${data.body}`)
                         ttt = res.data.result
-                        var teks = `*「 JAGOKATA 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
-                        ttt.forEach(tt1 => teks += `*Kata* : ${tt1.kata}\n*Author* : ${tt1.author}\n*Info*: ${tt1.author_info}\n*Link*: ${tt1.author_url}\n\n` )
-                        await data.reply(teks)
-                        break
-                        /*PRIMBON*/
-                    case 'jodoh':
-                    case 'ramalpasangan':
-                    case 'pasangan':
+                        var eks = `*「 YOUTUBE CHANNEL 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
+                        for(let i = 0; i < ttt.length; i++) {
+                            eks += `*Nama* : ${ttt[i].title}\n*Deskripsi*: ${ttt[i].description}\n*Verified* : ${ttt[i].verified}\n*Jumlah video*: ${ttt[i].video_count}\n*Subcriber*: ${ttt[i].subscriber_count}\n*Link*: ${ttt[i].url}\n\n`
+                        }
+                        await Client.sendFileFromUrl(from, ttt[0].thumbnail, 'axis.jpg', eks, message)
+                    } catch(e) {
+                        data.reply(`Maaf pencarian ${data.body} tidak ditemukan`)
+                    }
+                    break
+                case 'shopee':
+                    try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ kamu|dia ]*\nContoh : ${data.prefix}${data.command} shiro|elios`)
+                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}shopee [ query ]*\nContoh : ${data.prefix}shopee sepatu`)
                         data.reply(mess.wait)
-                        p = data.body
-                        text = p.split('|')
-                        res = await axios.get(`${configs.apiUrl}/api/primbonjodoh?apikey=${configs.zeksKey}&nama1=${text[0]}&nama2=${text[1]}`)
-                        if(res.data.status == false) data.reply(res.data.message)
-                        p = res.data.result
-                        tek = `*Nama kamu* : ${p.nama1}\n*Nama dia* : ${p.nama2}\n\n*Hasil positif* : ${p.positif}\n*Hasil negatif* : ${p.negatif}`
-                        Client.sendFileFromUrl(from, p.thumb, 'p.jpg', tek, message)
-                        break
-                    case 'artinama':
+                        res = await axios.get(`${configs.apiUrl}/api/shopee?apikey=${configs.zeksKey}&q=${data.body}`)
+                        ttt = res.data.data
+                        var teks = `*「 SHOPEE 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
+                        for(let i = 0; i < ttt.length; i++) {
+                            teks += `*Nama* : ${ttt[i].name}\n*Harga*: ${ttt[i].harga}\n*Terjual* : ${ttt[i].terjual}\n*Lokasi*: ${ttt[i].location}\n*Deskripsi*: ${ttt[i].desc}\n*Stok*: ${ttt[i].stock}\n*Informasi*: ${ttt[i].information}\n*Link*: ${ttt[i].url}\n\n`
+                        }
+                        await Client.sendFileFromUrl(from, ttt[0].img_detail[0], 'p.jpg', teks, message)
+                    } catch {
+                        data.reply(`Извините продукт ${data.body} не найден`)
+                    }
+                    break
+                case 'igstalk':
+                    try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}artinama [ nama ]*\nContoh : ${data.prefix}artinama elios`)
+                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}igstalk [ query ]*\nContoh : ${data.prefix}igstalk elios_xyz`)
                         data.reply(mess.wait)
-                        res = await axios.get(`${configs.apiUrl}/api/artinama?apikey=${configs.zeksKey}&nama=${data.body}`)
-                        if(res.data.status == false) data.reply(res.data.message)
-                        data.reply(res.data.result)
-                        break
-                    case 'artimimpi':
+                        res = await axios.get(`${configs.apiUrl}/api/igstalk?apikey=${configs.zeksKey}&username=${data.body}`)
+                        pe = res.data
+                        tek = `*「 INSTAGRAM PROFILE 」*	
+					
+*Username:* @${pe.username}
+*Nama:* ${pe.fullname}
+*Pengikut:* ${pe.follower}
+*Mengikuti*: ${pe.following}
+*Deskripsi:* ${pe.bio}
+*Link:* https://instagram.com/${pe.username}
+`
+                        Client.sendFileFromUrl(from, pe.profile_pic, 'p.jpg', tek, message)
+                    } catch {
+                        data.reply(`
+                        Извините, имя пользователя ${data.body} не найдено`)
+                    }
+                    break
+                case 'brainly':
+                    try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}artimimpi[ mimpi ]*\nContoh : ${data.prefix}artimimpi ular`)
+                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}brainly [ query ]*\nContoh : ${data.prefix}умник кто изобрел лампу`)
                         data.reply(mess.wait)
-                        res = await axios.get(`${configs.apiUrl}/api/artimimpi?apikey=${configs.zeksKey}&q=${data.body}`)
-                        if(res.data.status == false) data.reply(res.data.message)
-                        data.reply(res.data.result.string)
-                        break
-                        /*OTHER*/
-                    case 'jsholat':
-                    case 'jadwalsholat':
-                    case 'jadwalshalat':
+                        res = await axios.get(`${configs.apiUrl}/api/brainly?apikey=${configs.zeksKey}&q=${data.body}&count=3`)
+                        for(let i = 0; i < res.data.data.length; i++) {
+                            await Client.reply(from, `Pertanyaan : ${res.data.data[i].question}\n\nJawaban : ${res.data.data[i].answer[0].text}`, message)
+                        }
+                    } catch {
+                        data.reply(`Извините, ответ не найден`)
+                    }
+                    break
+                case 'spotify':
+                    try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ teks ]*\nContoh : ${data.prefix}${data.command} jakarta`)
+                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}spotify [ lagu ]*\nContoh : ${data.prefix}картина сумерки`)
                         data.reply(mess.wait)
-                        res = await axios.get(`${configs.apiUrl}/api/jadwalsholat?apikey=${configs.zeksKey}&daerah=${data.body}`)
-                        data.reply(res.data.data.string)
-                        break
-                    case 'jadwaltv':
+                        res = await axios.get(`${configs.apiUrl}/api/spotify?apikey=${configs.zeksKey}&q=${data.body}`)
+                        ttt = res.data.data
+                        var teks = `*「 SPOTIFY 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
+                        for(let i = 0; i < ttt.length; i++) {
+                            teks += `*Judul* : ${ttt[i].title}\n*Artis*: ${ttt[i].artists}\n*Album* : ${ttt[i].album}\n*Link*: ${ttt[i].url}\n*Preview*: ${ttt[i].preview_mp3}\n\n`
+                        }
+                        await Client.sendFileFromUrl(from, ttt[0].thumb, 'p.jpg', teks, message)
+                    } catch {
+                        data.reply(`Maaf lagu ${data.body} tidak ditemukan`)
+                    }
+                    break
+                case 'gsmarena':
+                    try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ teks ]*\nContoh : ${data.prefix}${data.command} antv`)
+                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}gsmarena [ hp ]*\nContoh : ${data.prefix}gsmarena asus rog phone 3`)
                         data.reply(mess.wait)
-                        res = await axios.get(`${configs.apiUrl}/api/jadwaltv?apikey=${configs.zeksKey}&channel=${data.body}`)
-                        data.reply(res.data.result)
-                        break
-                    case 'tts':
-                        if(isLimit(data.sender)) return data.reply(mess.limit)
-                        if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ code|teks ]*\nContoh : ${data.prefix}${data.command} id|hello world`)
-                        p = data.body
-                        text = p.split('|')
-                        Client.sendFileFromUrl(from, `${configs.apiUrl}/api/tts?apikey=${configs.zeksKey}&code=${text[0]}&text=${text[1]}`, 'p.mp3', '', message, {ptt: true}).catch(er => data.reply(listCode))
-                        break
-                        /*ГРУППА*/
-                    case 'скрытьтег':
-                    case 'каждый':
-                        if(!isAdmin) return data.reply('используеться только администратором!')
-                        var mention = []
-                        data.groupMetadata.participants.forEach((member, i) => {
-                            mention.push(member.jid)
-                        })
-                        data.reply(`${data.body}`, {
-                            contextInfo: {
-                                "mentionedJid": mention
-                            }
-                        })
-                        break
-                    case 'ссылкагруппы':
-                        if(!data.isGroup) return data.reply(mess.group)
-                        if(!data.botIsAdmin) return data.reply(mess.botAdmin)
-                        linkgc = await client.groupInviteCode(data.from)
-                        data.reply(`https://chat.whatsapp.com/${linkgc}`)
-                        break
+                        res = await axios.get(`${configs.apiUrl}/api/gsmArena?apikey=${configs.zeksKey}&q=${data.body}`)
+                        captions = `*HP* : ${res.data.data.title}\n\n${res.data.data.full_desc.string}\n${res.data.data.link}`
+                        Client.sendFileFromUrl(from, res.data.data.thumb, 'p.jpg', captions, message)
+                    } catch (e) {
+                        data.reply(`Maaf hp ${data.body} tidak ditemukan`)
+                    }
+                    break
+                case 'searchmusic':
+                case 'searchmusik':
+                    if(isLimit(data.sender)) return data.reply(mess.limit)
+                    if(data.isQuotedAudio) {
+                        files = await client.downloadMediaMessage(JSON.parse(JSON.stringify(message).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo)
+                        bodyForm = new FormData()
+                        bodyForm.append('audio', files, 'music.mp3')
+                        axios(`${configs.apiUrl}/api/searchmusic?apikey=${configs.zeksKey}`, {
+                                method: 'POST',
+                                headers: {
+                                    ...bodyForm.getHeaders()
+                                },
+                                data: bodyForm.getBuffer()
+                            })
+                            .then(({
+                                data
+                            }) => {
+                                if(data.status) {
+                                    Client.reply(from, `_[ *Search Music* ]_\n\n*Title*: ${data.data.title}\n*Artists*: ${data.data.artists}\n*Genre*: ${data.data.genre}\n*Album*: ${data.data.album}\n*Release date*: ${data.data.release_date}`, message)
+                                } else Client.reply(from, data.message, message)
+                            }).catch(() => Client.reply(from, 'Internal server error!, try again later', message))
+                    } else Client.reply(from, 'Wrong format!', message)
+                    break
+                case 'wallpaper':
+				    try{
+                    if(isLimit(data.sender)) return data.reply(mess.limit)
+                    if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}wallpaper [ query ]*\nContoh : ${data.prefix}wallpaper kucing`)
+                    data.reply(mess.wait)
+                    res = await axios.get(`${configs.apiUrl}/api/unsplash?apikey=${configs.zeksKey}&q=${data.body}`)
+                    if(res.data.status == false) data.reply(res.data.message)
+                    n = res.data.result
+                    image = n[Math.floor(Math.random() * n.length)]
+                    Client.sendFileFromUrl(from, image.img_hd, 'p.jpg', `*Hasil pecarian* : ${data.body}`, message)
+                    } catch {
+                        data.reply(`error`)
+                    }
+                    break
+                case 'pinterest':
+				    try{
+                    if(isLimit(data.sender)) return data.reply(mess.limit)
+                    if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}pinterest [ query ]*\nContoh : ${data.prefix}pinterest kucing`)
+                    data.reply(mess.wait)
+                    res = await axios.get(`${configs.apiUrl}/api/pinimg?apikey=${configs.zeksKey}&q=${data.body}`)
+                    n = res.data.data
+                    image = n[Math.floor(Math.random() * n.length)]
+                    Client.sendFileFromUrl(from, image, 'p.jpg', `*Hasil pecarian* : ${data.body}`, message)
+                    } catch {
+                        data.reply(`error`)
+                    }
+                    break
+                case 'googleimage':
+				    try{
+                    if(isLimit(data.sender)) return data.reply(mess.limit)
+                    if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}googleimage [ query ]*\nContoh : ${data.prefix}googleimage kucing`)
+                    data.reply(mess.wait)
+                    res = await axios.get(`${configs.apiUrl}/api/gimg?apikey=${configs.zeksKey}&q=${data.body}`)
+                    n = res.data.data
+                    image = n[Math.floor(Math.random() * n.length)]
+                    Client.sendFileFromUrl(from, image, 'p.jpg', `*Hasil pecarian* : ${data.body}`, message)
+                    } catch {
+                        data.reply(`error`)
+                    }
+                    break
+                case 'jagokata':
+                    if(isLimit(data.sender)) return data.reply(mess.limit)
+                    if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}jagokata [ apk ]*\nContoh : ${data.prefix}jagokata bersyukurlah`)
+                    data.reply(mess.wait)
+                    res = await axios.get(`${configs.apiUrl}/api/jagokata?apikey=${configs.zeksKey}&q=${data.body}`)
+                    if(res.data.status == false) data.reply(res.data.message)
+                    ttt = res.data.result
+                    var teks = `*「 JAGOKATA 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
+                    ttt.forEach(tt1 => teks += `*Kata* : ${tt1.kata}\n*Author* : ${tt1.author}\n*Info*: ${tt1.author_info}\n*Link*: ${tt1.author_url}\n\n` )
+                    await data.reply(teks)
+                    break
+                    /*PRIMBON*/
+                case 'jodoh':
+                case 'ramalpasangan':
+                case 'pasangan':
+                    if(isLimit(data.sender)) return data.reply(mess.limit)
+                    if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ kamu|dia ]*\nContoh : ${data.prefix}${data.command} shiro|elios`)
+                    data.reply(mess.wait)
+                    p = data.body
+                    text = p.split('|')
+                    res = await axios.get(`${configs.apiUrl}/api/primbonjodoh?apikey=${configs.zeksKey}&nama1=${text[0]}&nama2=${text[1]}`)
+                    if(res.data.status == false) data.reply(res.data.message)
+                    p = res.data.result
+                    tek = `*Nama kamu* : ${p.nama1}\n*Nama dia* : ${p.nama2}\n\n*Hasil positif* : ${p.positif}\n*Hasil negatif* : ${p.negatif}`
+                    Client.sendFileFromUrl(from, p.thumb, 'p.jpg', tek, message)
+                    break
+                case 'artinama':
+                    if(isLimit(data.sender)) return data.reply(mess.limit)
+                    if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}artinama [ nama ]*\nContoh : ${data.prefix}artinama elios`)
+                    data.reply(mess.wait)
+                    res = await axios.get(`${configs.apiUrl}/api/artinama?apikey=${configs.zeksKey}&nama=${data.body}`)
+                    if(res.data.status == false) data.reply(res.data.message)
+                    data.reply(res.data.result)
+                    break
+                case 'artimimpi':
+                    if(isLimit(data.sender)) return data.reply(mess.limit)
+                    if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}artimimpi[ mimpi ]*\nContoh : ${data.prefix}artimimpi ular`)
+                    data.reply(mess.wait)
+                    res = await axios.get(`${configs.apiUrl}/api/artimimpi?apikey=${configs.zeksKey}&q=${data.body}`)
+                    if(res.data.status == false) data.reply(res.data.message)
+                    data.reply(res.data.result.string)
+                    break
+                    /*OTHER*/
+                case 'jsholat':
+                case 'jadwalsholat':
+                case 'jadwalshalat':
+                    if(isLimit(data.sender)) return data.reply(mess.limit)
+                    if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ teks ]*\nContoh : ${data.prefix}${data.command} jakarta`)
+                    data.reply(mess.wait)
+                    res = await axios.get(`${configs.apiUrl}/api/jadwalsholat?apikey=${configs.zeksKey}&daerah=${data.body}`)
+                    data.reply(res.data.data.string)
+                    break
+                case 'jadwaltv':
+                    if(isLimit(data.sender)) return data.reply(mess.limit)
+                    if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ teks ]*\nContoh : ${data.prefix}${data.command} antv`)
+                    data.reply(mess.wait)
+                    res = await axios.get(`${configs.apiUrl}/api/jadwaltv?apikey=${configs.zeksKey}&channel=${data.body}`)
+                    data.reply(res.data.result)
+                    break
+                case 'tts':
+                    if(isLimit(data.sender)) return data.reply(mess.limit)
+                    if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ code|teks ]*\nContoh : ${data.prefix}${data.command} id|hello world`)
+                    p = data.body
+                    text = p.split('|')
+			        Client.sendFileFromUrl(from, `${configs.apiUrl}/api/tts?apikey=${configs.zeksKey}&code=${text[0]}&text=${text[1]}`, 'p.mp3', '', message, {ptt: true}).catch(er => data.reply(listCode))
+					break
+                    /*ГРУППА*/
+                case 'скрытьтег':
+                case 'каждый':
+                    if(!isAdmin) return data.reply('используеться только администратором!')
+                    var mention = []
+                    data.groupMetadata.participants.forEach((member, i) => {
+                        mention.push(member.jid)
+                    })
+                    data.reply(`${data.body}`, {
+                        contextInfo: {
+                            "mentionedJid": mention
+                        }
+                    })
+                    break
+                case 'ссылкагруппы':
+                    if(!data.isGroup) return data.reply(mess.group)
+                    if(!data.botIsAdmin) return data.reply(mess.botAdmin)
+                    linkgc = await client.groupInviteCode(data.from)
+                    data.reply(`https://chat.whatsapp.com/${linkgc}`)
+                    break
                     /*DLL*/
                 case 'стикерменю':
                     Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/menus.webp'), message).then(resData => Client.sendText(from, 'используйте эту наклейку для отображения меню!', {
@@ -1592,14 +1592,14 @@ module.exports = handle = (client, Client) => {
                     if(!datas.isAdmin) return datas.reply(mess.admin)
                     if(!datas.botIsAdmin) return datas.reply(mess.botAdmin)
                     client.groupSettingChange(from, GroupSettingChange.messageSend, false)
-                    datas.reply(`Группа открыта администратором @${datas.sender.split('@')[0]}`)
+                    datas.reply(`Group telah dibuka oleh admin @${datas.sender.split('@')[0]}`)
 				    break
 			    case '1.3049292658533466e+123':
 				    if(!datas.isGroup) return datas.reply(mess.group)
                     if(!datas.isAdmin) return datas.reply(mess.admin)
                     if(!datas.botIsAdmin) return datas.reply(mess.botAdmin)
                     client.groupSettingChange(from, GroupSettingChange.messageSend, true)
-                    datas.reply(`Группа закрыта администратором @${datas.sender.split('@')[0]}`)
+                    datas.reply(`Group telah ditutup oleh admin @${datas.sender.split('@')[0]}`)
 				    break
             }
         })
