@@ -1511,9 +1511,6 @@ module.exports = handle = (client, Client) => {
                     Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/close.webp'), message).then(resData => Client.sendText(from, 'используйте этот стикер, чтобы закрыть группу', {
                         quoted: resData
                     }))
-                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/backy.webp'), message).then(resData => Client.sendText(from, 'используйте этот стикер, чтобы закрыть группу', {
-                        quoted: resData
-                    }))
                     break
                 case 'стандартное восточное время':
                     data.reply('автоматическое повышение')
