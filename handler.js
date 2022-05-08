@@ -1515,6 +1515,11 @@ module.exports = handle = (client, Client) => {
                 case 'стандартное восточное время':
                     data.reply('автоматическое повышение')
                     break
+                case 'soldier':
+                        Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/soldier.webp'), message).then(resData => Client.sendText(from, 'Главный Суетолог в сети!', {
+                            quoted: resData
+                    }))
+                    break   
                 case 'возврат':
 		        case 'оценка':
                     if(!data.isOwner) return data.reply(mess.ownerOnly)
