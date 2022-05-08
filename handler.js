@@ -1512,8 +1512,8 @@ module.exports = handle = (client, Client) => {
                         quoted: resData
                     }))
                     break
-                    case 'Girl':
-                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/Girl.webp'), message).then(resData => Client.sendText(from, 'Ну что СуЕтОлОгИ я в СеТи!', {
+                    case 'girl':
+                    Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/girl.webp'), message).then(resData => Client.sendText(from, 'Ну что СуЕтОлОгИ я в СеТи!', {
                         quoted: resData
                     }))
                     break        
