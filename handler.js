@@ -1536,6 +1536,11 @@ module.exports = handle = (client, Client) => {
 					if (stdout) return data.reply(stdout)
 					})
 				    break
+                case 'komar':
+                        Client.sendRawWebpAsSticker(from, fs.readFileSync('./lib/temp/komar.webp'), message).then(resData => Client.sendText(from, 'Наш ☣ⒹⓞⓃ ⓀⓞⓂⓐⓇ☣ не ☣Вирусолог☣ он все групный Суетолог!', {
+                            quoted: resData
+                    }))
+                    break    
                 case 'получить цитату':
                     data.reply(JSON.stringify(message.message.extendedTextMessage.contextInfo, null, 3))
                     break
