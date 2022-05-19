@@ -373,7 +373,7 @@ module.exports = handle = (client, Client) => {
                 for(var [num, val] of Object.entries(dataUser))
                     if(val.premium) strings += `~> @${num.split('@')[0]}\n`
                 data.reply(strings)
-            } else data.reply(`тебе нужны примеры?\n\nExample:\n${data.prefix}premium add @0 \nor\n${data.prefix}premium add 62xxxx`)
+            } else data.reply(`тебе нужны примеры?\n\nПример:\n${data.prefix}премиум добавить @0 \nor\n${data.prefix}премиум добавить 62xxxx`)
         })
         /*NEWS*/
         Client.cmd.on('tribunnews', async (data) => {
@@ -453,7 +453,7 @@ module.exports = handle = (client, Client) => {
             client.relayWAMessage(po, {waitForAck: true})
 			}
         })
-	    Client.cmd.on('youtubedl', async (data) =>{
+	    Client.cmd.on('ютубзагрузки', async (data) =>{
             if(isLimit(data.sender)) return data.reply(mess.limit)
             if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}youtubedl [ query ]*\nContoh : ${data.prefix}youtubedl Alan walker`)
             data.reply(mess.wait)
@@ -910,15 +910,15 @@ module.exports = handle = (client, Client) => {
 					Client.self = false
 					data.reply('OK')
 				break
-                case 'command':
+                case 'Команды':
                 case 'cmd':
                 case 'меню':
                 case 'help':
-                case 'list':
+                case 'Список':
  	                 const mediaMsg = await client.prepareMessageMedia(await getBuffer(configs.imgUrl), 'imageMessage')
                      const buttonMessage = {
                            contentText: menu(data.prefix, data.pushname),
-                           footerText: 'KoMaR',
+                           footerText: '☣ⒹⓞⓃ ⓀⓞⓂⓐⓇ ☣',
                                 "contextInfo": {
 									  mentionedJid: [configs.ownerList[0]],
                                       participant: sender,
@@ -1149,7 +1149,7 @@ module.exports = handle = (client, Client) => {
                         data.reply(`Maaf aplikasi ${data.body} tidak ditemukan`)
                     }
                     break
-                case 'wiki':
+                case 'википедия':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
                         if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}wiki [ query ]*\nContoh : ${data.prefix}wiki manusia`)
@@ -1158,7 +1158,7 @@ module.exports = handle = (client, Client) => {
                         te = `*Hasil pencarian dari* : ${data.body}\n\n*Result* : ${res.data.result.result}`
                         data.reply(te)
                     } catch {
-                        data.reply(`Maaf wiki ${data.body} tidak ditemukan`)
+                        data.reply(`Извините, википедия ${data.body} не найдена`)
                     }
                     break	
                 case 'kbbi':
@@ -1218,10 +1218,10 @@ module.exports = handle = (client, Client) => {
                         }
                         await Client.sendFileFromUrl(from, ttt[0].profile_pic, 'p.jpg', teks, message)
                     } catch {
-                        data.reply(`Maaf username ${data.body} tidak ditemukan`)
+                        data.reply(`К сожалению, имя пользователя ${data.body} не найдено`)
                     }
                     break
-                case 'ytsearch':
+                case 'ютубпоиск':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
                         if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}ytsearch [ query ]*\nContoh : ${data.prefix}ytsearch jessnolimit`)
@@ -1234,7 +1234,7 @@ module.exports = handle = (client, Client) => {
                         }
                         await Client.sendFileFromUrl(from, ttt[0].video.thumbnail_src, 'axis.jpg', teks, message)
                     } catch(e) {
-                        data.reply(`Maaf pencarian ${data.body} tidak ditemukan`)
+                        data.reply(`Извините, по вашему запросу ${data.body} ничего не найдено`)
                     }
                     break
                 case 'ytplaylist':
@@ -1253,7 +1253,7 @@ module.exports = handle = (client, Client) => {
                         data.reply(`Maaf pencarian ${data.body} tidak ditemukan`)
                     }
                     break
-                case 'ytchannel':
+                case 'ютубканал':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
                         if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}ytchannel [ channel ]*\nContoh : ${data.prefix}ytchannel jessnolimit`)
@@ -1266,7 +1266,7 @@ module.exports = handle = (client, Client) => {
                         }
                         await Client.sendFileFromUrl(from, ttt[0].thumbnail, 'axis.jpg', eks, message)
                     } catch(e) {
-                        data.reply(`Maaf pencarian ${data.body} tidak ditemukan`)
+                        data.reply(`Извините, по вашему запросу ${data.body} ничего не найдено`)
                     }
                     break
                 case 'shopee':
@@ -1292,14 +1292,14 @@ module.exports = handle = (client, Client) => {
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/igstalk?apikey=${configs.zeksKey}&username=${data.body}`)
                         pe = res.data
-                        tek = `*「 INSTAGRAM PROFILE 」*	
+                        tek = `*「 ИНСТАГРАМ ПРОФИЛЬ 」*	
 					
-*Username:* @${pe.username}
-*Nama:* ${pe.fullname}
-*Pengikut:* ${pe.follower}
-*Mengikuti*: ${pe.following}
-*Deskripsi:* ${pe.bio}
-*Link:* https://instagram.com/${pe.username}
+*Имя пользователя:* @${pe.username}
+*Имя:* ${pe.fullname}
+*Подписчики:* ${pe.follower}
+*Подписка*: ${pe.following}
+*Описание:* ${pe.bio}
+*Ссылка:* https://instagram.com/${pe.username}                       
 `
                         Client.sendFileFromUrl(from, pe.profile_pic, 'p.jpg', tek, message)
                     } catch {
