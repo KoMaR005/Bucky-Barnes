@@ -131,7 +131,7 @@ module.exports = handle = (client, Client) => {
             data.reply(teks)
             Client.sendFileFromUrl(data.from, rquran.audio, 'quran.mp3', ``, data.message)
         })
-        Client.cmd.on('estetikpic', async (data) => {
+        Client.cmd.on('эстетическоефото', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             Client.sendFileFromUrl(data.from, `${configs.apiUrl}/api/estetikpic?apikey=${configs.zeksKey}`, 'estetik.jpg', ``, data.message)
         })
@@ -145,42 +145,42 @@ module.exports = handle = (client, Client) => {
             res = await axios.get(`${configs.apiUrl}/api/darkjokes?apikey=${configs.zeksKey}`)
             Client.sendFileFromUrl(data.from, res.data.result, 'p.jpg', ``, data.message)
         })
-        Client.cmd.on('nickepep', async (data) => {
+        Client.cmd.on('никэпеп', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             res = await axios.get(`${configs.apiUrl}/api/nickepep?apikey=${configs.zeksKey}`)
             n = res.data.result
             nick = n[Math.floor(Math.random() * n.length)]
             data.reply(nick)
         })
-        Client.cmd.on('quotes', async (data) => {
+        Client.cmd.on('цитаты', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             res = await axios.get(`${configs.apiUrl}/api/quote?apikey=${configs.zeksKey}`)
             que = res.data.result
             teks = `*Author* : ${que.author}\n*Quotes* : ${que.quotes}`
             data.reply(teks)
         })
-        Client.cmd.on('pantun', async (data) => {
+        Client.cmd.on('тяжелоедыхание', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             res = await axios.get(`${configs.apiUrl}/api/pantun?apikey=${configs.zeksKey}`)
             data.reply(res.data.result.pantun)
         })
-        Client.cmd.on('limit', async (data) => {
+        Client.cmd.on('лимит', async (data) => {
             const dataUser = JSON.parse(fs.readFileSync('./lib/json/dataUser.json'))
-            if(dataUser[data.sender].premium) return data.reply(`Привет @${data.sender.split('@')[0]} 👋🏻\nAnda adalah user premium yang memiliki akses tanpa batas limit!`)
+            if(dataUser[data.sender].premium) return data.reply(`Привет @${data.sender.split('@')[0]} 👋🏻\nВы премиум-пользователь с неограниченным доступом!`)
             limits = configs.maxLimit - dataUser[data.sender].limit
-            if(limits <= 0) return data.reply("```" + `Limit anda sudah habis` + "```")
-            data.reply(`Hai @${data.sender.split('@')[0]} 👋🏻\n Limit anda tersisa ${limits || 30}\nLimit setiap hari di reset jam 00.00\nJika anda ingin mendapatkan unlimited limit silahkan chat owner bot ketik !owner`)
+            if(limits <= 0) return data.reply("```" + `Ваш лимит исчерпан` + "```")
+            data.reply(`Привет @${data.sender.split('@')[0]} 👋🏻\n Ваш лимит остается ${limits || 30}\nДневной лимит сбрасывается в 00.00\nЕсли вы хотите получить неограниченный лимит, пообщайтесь с владельцем бота, введите #владелец`)
         })
         Client.cmd.on('инфо', async (data) => {
 		data.reply(ingfo)
 		})
 		/*АНИМЭ*/
-        Client.cmd.on('waifu', async (data) => {
+        Client.cmd.on('вайфу', async (data) => {
 			if(isLimit(data.sender)) return data.reply(mess.limit)
 			const res = await axios.get(`https://waifu.pics/api/sfw/waifu`)
 			const mediaMsg = await client.prepareMessageMedia(await getBuffer(res.data.url), 'imageMessage')
             const buttonMessage = {
-			      contentText: 'Waifu',
+			      contentText: 'Вайфу',
 				  footerText: 'Нажмите кнопку ниже, чтобы получить случайное изображение вайфу',
                         "contextInfo": {
                               participant: data.sender,
@@ -202,7 +202,7 @@ module.exports = handle = (client, Client) => {
             let zz = await client.prepareMessageFromContent(data.from, {buttonsMessage: buttonMessage}, {})
             client.relayWAMessage(zz, {waitForAck: true}) 
 		})
-        Client.cmd.on('anime', async (data) => {
+        Client.cmd.on('аниме', async (data) => {
 			try {
 			if(isLimit(data.sender)) return data.reply(mess.limit)
             if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}anime [ query ]*\nContoh : ${data.prefix}anime naruto`)
@@ -212,7 +212,7 @@ module.exports = handle = (client, Client) => {
 			const { title, synopsis, episodes, url, rated, score, image_url } = damta.results[0]
 			Client.sendFileFromUrl(data.from, image_url, 'p.jpg', `*Anime found!*\n\n*Title:* ${title}\n*Episodes:* ${episodes}\n*Rating:* ${rated}\n*Score:* ${score}\n*Synopsis:* ${synopsis}\n*URL*: ${url}`, data.message)
             } catch {
-                data.reply('Anime not found')
+                data.reply('Аниме не найдено')
             }
 		})
         Client.cmd.on('manga', async (data) => {
