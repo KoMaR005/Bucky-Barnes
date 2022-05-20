@@ -14,7 +14,7 @@ moment.tz.setDefault('Asia/Jakarta').locale('id');
 module.exports = handle = (client, Client) => {
     try {
         /*ЗАГРУЗЧИК*/
-        Client.cmd.on('ytmp4', async (data) => {
+        Client.cmd.on('ютубmp4', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
                 if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}ytmp4 [ link ]*\nContoh : ${data.prefix}ytmp4 https://www.youtube.com/watch?v=0maWbr0FHKY`)
@@ -22,7 +22,7 @@ module.exports = handle = (client, Client) => {
                 res = await axios.get(`${configs.apiUrl}/api/ytmp4/2?apikey=${configs.zeksKey}&url=${data.body}`)
                 if(res.data.status == false) data.reply(res.data.message)
                 ytm = res.data.result
-                teks = `*Данные успешно получены!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+                teks = `*Данные успешно получены!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n\n_Подождите, пока файл мультимедиа будет отправлен, это может занять несколько минут._`
                 if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp4\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp4`, `Видео отправлено @${data.sender.split('@')[0]}`, data.message)
@@ -30,7 +30,7 @@ module.exports = handle = (client, Client) => {
                 data.reply('Ой, извините, сервер ошибся или, возможно, неверный апикей')
             }
         })
-        Client.cmd.on('ytmp3', async (data) => {
+        Client.cmd.on('ютубmp3', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
                 if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}ytmp3 [ link ]*\nContoh : ${data.prefix}ytmp3 https://www.youtube.com/watch?v=0maWbr0FHKY`)
@@ -38,7 +38,7 @@ module.exports = handle = (client, Client) => {
                 res = await axios.get(`${configs.apiUrl}/api/ytmp3/2?apikey=${configs.zeksKey}&url=${data.body}`)
                 if(res.data.status == false) data.reply(res.data.message)
                 ytm = res.data.result
-                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n\n_Подождите, пока файл мультимедиа будет отправлен, это может занять несколько минут._`
                 if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp3\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp3`, ``, data.message)
@@ -46,7 +46,7 @@ module.exports = handle = (client, Client) => {
                 data.reply('Ой, извините, сервер ошибся или, возможно, неверный апикей')
             }
         })
-        Client.cmd.on('playvid', async (data) => {
+        Client.cmd.on('проигратьвидео', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
                 if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}playvid [ query ]*\nContoh : ${data.prefix}playvid amv`)
@@ -54,7 +54,7 @@ module.exports = handle = (client, Client) => {
                 res = await axios.get(`${configs.apiUrl}/api/ytplaymp4/2?apikey=${configs.zeksKey}&q=${data.body}`)
                 if(res.data.status == false) data.reply(res.data.message)
                 ytm = res.data.result
-                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*Source* : ${ytm.source}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*Source* : ${ytm.source}\n\n_Подождите, пока файл мультимедиа будет отправлен, это может занять несколько минут._`
                 if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp4\n*Source* : ${ytm.source}\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, 'video.mp4', `Video telah terkirim @${data.sender.split('@')[0]}`, data.message)
@@ -62,7 +62,7 @@ module.exports = handle = (client, Client) => {
                 data.reply('Ой, извините, сервер ошибся или, возможно, неверный апикей')
             }
         })
-        Client.cmd.on('play', async (data) => {
+        Client.cmd.on('воспроизвести', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
                 if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}play [ link ]*\nContoh : ${data.prefix}play alone`)
@@ -70,7 +70,7 @@ module.exports = handle = (client, Client) => {
                 res = await axios.get(`${configs.apiUrl}/api/ytplaymp3/2?apikey=${configs.zeksKey}&q=${data.body}`)
                 if(res.data.status == false) data.reply(res.data.message)
                 ytm = res.data.result
-                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*Source* : ${ytm.source}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*Source* : ${ytm.source}\n\n_Подождите, пока файл мультимедиа будет отправлен, это может занять несколько минут._`
                 if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp3\n*Source* : ${ytm.source}\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
                 Client.sendFileFromUrl(data.from, ytm.thumb, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, ytm.link, `${ytm.title} - Download.mp3`, ``, data.message)
@@ -78,7 +78,7 @@ module.exports = handle = (client, Client) => {
                 data.reply('Ой, извините, сервер ошибся или, возможно, неверный апикей')
             }
         })
-        Client.cmd.on('ig', async (data) => {
+        Client.cmd.on('инстаграм', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}ig [ link ]*\nContoh : ${data.prefix}ig https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
             data.reply(mess.wait)
@@ -88,7 +88,7 @@ module.exports = handle = (client, Client) => {
                 Client.sendFileFromUrl(data.from, getresult.data.result[i].url, `ig.${getresult.data.result[i].type}`, `「 INSTAGRAM 」\n\n*Username*: ${getresult.data.owner}\n*Caption*: ${getresult.data.caption}`, data.message);
             }
         })
-        Client.cmd.on('igstory', async (data) => {
+        Client.cmd.on('инстаграмсторис', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
                 if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}igstory [ username ]*\nContoh : ${data.prefix}igstory jessnolimit`)
@@ -99,10 +99,10 @@ module.exports = handle = (client, Client) => {
                     Client.sendFileFromUrl(data.from, stomr.data.data[i].url, `ig.${stomr.data.data[i].type}`, `「 INSTAGRAM 」\n\n*Username*: ${stomr.data.username}\n*Type*: ${stomr.data.data[i].type}`, data.message);
                 }
             } catch {
-                data.reply('Username tidak ditemukan')
+                data.reply('Имя пользователя не найдено')
             }
         })
-        Client.cmd.on('joox', async (data) => {
+        Client.cmd.on('джукс', async (data) => {
             try {
                 if(isLimit(data.sender)) return data.reply(mess.limit)
                 if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}joox [ lagu ]*\nContoh : ${data.prefix}joox bad liar`)
@@ -110,7 +110,7 @@ module.exports = handle = (client, Client) => {
                 res = await axios.get(`${configs.apiUrl}/api/joox?apikey=${configs.zeksKey}&q=${data.body}`)
                 if(res.data.status == false) data.reply(jox.data.message)
                 jox = res.data.data[0]
-                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${jox.judul}\n*Artis* : ${jox.artist}\n*Album* : ${jox.album}\n*Ukuran* : ${jox.size}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
+                teks = `*Data berhasil didapatkan!*\n\n*Judul* : ${jox.judul}\n*Artis* : ${jox.artist}\n*Album* : ${jox.album}\n*Ukuran* : ${jox.size}\n\n_Подождите, пока файл мультимедиа будет отправлен, это может занять несколько минут._`
                 Client.sendFileFromUrl(data.from, `${jox.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${jox.audio}`, 'audio.mp3', ``, data.message)
             } catch {
@@ -135,12 +135,12 @@ module.exports = handle = (client, Client) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             Client.sendFileFromUrl(data.from, `${configs.apiUrl}/api/estetikpic?apikey=${configs.zeksKey}`, 'estetik.jpg', ``, data.message)
         })
-        Client.cmd.on('meme', async (data) => {
+        Client.cmd.on('мем', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             res = await axios.get(`${configs.apiUrl}/api/memeindo?apikey=${configs.zeksKey}`)
             Client.sendFileFromUrl(data.from, res.data.result, 'p.jpg', ``, data.message)
         })
-        Client.cmd.on('darkjoke', async (data) => {
+        Client.cmd.on('черныйюмор', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             res = await axios.get(`${configs.apiUrl}/api/darkjokes?apikey=${configs.zeksKey}`)
             Client.sendFileFromUrl(data.from, res.data.result, 'p.jpg', ``, data.message)
@@ -1422,10 +1422,10 @@ module.exports = handle = (client, Client) => {
                     ttt.forEach(tt1 => teks += `*Kata* : ${tt1.kata}\n*Author* : ${tt1.author}\n*Info*: ${tt1.author_info}\n*Link*: ${tt1.author_url}\n\n` )
                     await data.reply(teks)
                     break
-                    /*PRIMBON*/
-                case 'jodoh':
-                case 'ramalpasangan':
-                case 'pasangan':
+                    /*ГОРОСКОП*/
+                case 'партнер':
+                case 'гадание':
+                case 'партнер':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ kamu|dia ]*\nContoh : ${data.prefix}${data.command} shiro|elios`)
                     data.reply(mess.wait)
@@ -1437,7 +1437,7 @@ module.exports = handle = (client, Client) => {
                     tek = `*Nama kamu* : ${p.nama1}\n*Nama dia* : ${p.nama2}\n\n*Hasil positif* : ${p.positif}\n*Hasil negatif* : ${p.negatif}`
                     Client.sendFileFromUrl(from, p.thumb, 'p.jpg', tek, message)
                     break
-                case 'artinama':
+                case 'значение имени':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}artinama [ nama ]*\nContoh : ${data.prefix}artinama elios`)
                     data.reply(mess.wait)
@@ -1445,7 +1445,7 @@ module.exports = handle = (client, Client) => {
                     if(res.data.status == false) data.reply(res.data.message)
                     data.reply(res.data.result)
                     break
-                case 'artimimpi':
+                case 'значение сна':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}artimimpi[ mimpi ]*\nContoh : ${data.prefix}artimimpi ular`)
                     data.reply(mess.wait)
@@ -1453,9 +1453,9 @@ module.exports = handle = (client, Client) => {
                     if(res.data.status == false) data.reply(res.data.message)
                     data.reply(res.data.result.string)
                     break
-                    /*OTHER*/
+                    /*ДРУГИЕ*/
                 case 'jsholat':
-                case 'jadwalsholat':
+                case 'расписание молитв':
                 case 'jadwalshalat':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}${data.command} [ teks ]*\nContoh : ${data.prefix}${data.command} jakarta`)
