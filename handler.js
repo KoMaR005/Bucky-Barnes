@@ -189,7 +189,7 @@ module.exports = handle = (client, Client) => {
 							  },
                               buttons: [
                                 {
-                                 buttonId: `${data.prefix}waifu`,
+                                 buttonId: `${data.prefix}вайфу`,
                                  buttonText: {
                                     displayText: `⏯️ Получить снова`
                                   },
@@ -210,7 +210,7 @@ module.exports = handle = (client, Client) => {
             const res = await fetch(`https://api.jikan.moe/v3/search/anime?q=${data.body}`)
 			const damta = await res.json()
 			const { title, synopsis, episodes, url, rated, score, image_url } = damta.results[0]
-			Client.sendFileFromUrl(data.from, image_url, 'p.jpg', `*Anime found!*\n\n*Title:* ${title}\n*Episodes:* ${episodes}\n*Rating:* ${rated}\n*Score:* ${score}\n*Synopsis:* ${synopsis}\n*URL*: ${url}`, data.message)
+			Client.sendFileFromUrl(data.from, image_url, 'p.jpg', `*Аниме найдено!*\n\n*Title:* ${title}\n*Episodes:* ${episodes}\n*Rating:* ${rated}\n*Score:* ${score}\n*Synopsis:* ${synopsis}\n*URL*: ${url}`, data.message)
             } catch {
                 data.reply('Аниме не найдено')
             }
@@ -375,7 +375,7 @@ module.exports = handle = (client, Client) => {
                 data.reply(strings)
             } else data.reply(`тебе нужны примеры?\n\nПример:\n${data.prefix}премиум добавить @0 \nor\n${data.prefix}премиум добавить 62xxxx`)
         })
-        /*NEWS*/
+        /*НОВОСТИ*/
         Client.cmd.on('tribunnews', async (data) => {
             if(isLimit(data.sender)) return data.reply(mess.limit)
             res = await axios.get(`${configs.apiUrl}/api/tribunews?apikey=${configs.zeksKey}`)
@@ -1237,14 +1237,14 @@ module.exports = handle = (client, Client) => {
                         data.reply(`Извините, по вашему запросу ${data.body} ничего не найдено`)
                     }
                     break
-                case 'ytplaylist':
+                case 'ютубплейлист':
                     try {
                         if(isLimit(data.sender)) return data.reply(mess.limit)
                         if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}ytplaylist[ channel ]*\nContoh : ${data.prefix}ytplaylist jessnolimit`)
                         data.reply(mess.wait)
                         res = await axios.get(`${configs.apiUrl}/api/ytplaylist?apikey=${configs.zeksKey}&q=${data.body}`)
                         ttt = res.data.result
-                        var tekss = `*「 YOUTUBE PLAYLIST 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
+                        var tekss = `*「 ЮТУБ ПЛЕЙЛИСТ 」*\n\n*Hasil Pencarian : ${data.body}*\n\n`
                         for(let i = 0; i < ttt.length; i++) {
                             tekss += `*Nama* : ${ttt[i].title}\n*Jumlah video*: ${ttt[i].video_count}\n*Channel*: ${ttt[i].uploader.username}\n*Link*: ${ttt[i].url}\n\n`
                         }
@@ -1348,7 +1348,7 @@ module.exports = handle = (client, Client) => {
                         data.reply(`Maaf hp ${data.body} tidak ditemukan`)
                     }
                     break
-                case 'searchmusic':
+                case 'поискмузыки':
                 case 'searchmusik':
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(data.isQuotedAudio) {
@@ -1371,7 +1371,7 @@ module.exports = handle = (client, Client) => {
                             }).catch(() => Client.reply(from, 'Internal server error!, try again later', message))
                     } else Client.reply(from, 'Wrong format!', message)
                     break
-                case 'wallpaper':
+                case 'обои':
 				    try{
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}wallpaper [ query ]*\nContoh : ${data.prefix}wallpaper kucing`)
@@ -1398,7 +1398,7 @@ module.exports = handle = (client, Client) => {
                         data.reply(`error`)
                     }
                     break
-                case 'googleimage':
+                case 'гуглизображения':
 				    try{
                     if(isLimit(data.sender)) return data.reply(mess.limit)
                     if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}googleimage [ query ]*\nContoh : ${data.prefix}googleimage kucing`)
