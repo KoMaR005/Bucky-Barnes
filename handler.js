@@ -215,7 +215,7 @@ module.exports = handle = (client, Client) => {
                 data.reply('Аниме не найдено')
             }
 		})
-        Client.cmd.on('manga', async (data) => {
+        Client.cmd.on('манга', async (data) => {
 			try {
 			if(isLimit(data.sender)) return data.reply(mess.limit)
             if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}manga [ query ]*\nContoh : ${data.prefix}manga naruto`)
@@ -223,12 +223,12 @@ module.exports = handle = (client, Client) => {
             const res = await fetch(`https://api.jikan.moe/v3/search/manga?q=${data.body}`)
 			const damta = await res.json()
 			const { title, synopsis, chapters, url, rated, score, image_url } = damta.results[0]
-			Client.sendFileFromUrl(data.from, image_url, 'p.jpg', `*Manga found!*\n\n*Title:* ${title}\n*Chapters:* ${chapters}\n*Rating:* ${rated}\n*Score:* ${score}\n*Synopsis:* ${synopsis}\n*URL*: ${url}`, data.message)
+			Client.sendFileFromUrl(data.from, image_url, 'p.jpg', `*Манга найдена!*\n\n*Title:* ${title}\n*Chapters:* ${chapters}\n*Rating:* ${rated}\n*Score:* ${score}\n*Synopsis:* ${synopsis}\n*URL*: ${url}`, data.message)
             } catch {
-                data.reply('Manga not found')
+                data.reply('Манга не найдена')
             }
 		})
-        Client.cmd.on('chara', async (data) => {
+        Client.cmd.on('чара', async (data) => {
 			try {
 			if(isLimit(data.sender)) return data.reply(mess.limit)
             if(data.body == "") return data.reply(`Обработка Запроса *${data.prefix}chara [ query ]*\nContoh : ${data.prefix}manga naruto`)
