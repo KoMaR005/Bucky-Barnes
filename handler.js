@@ -1555,7 +1555,7 @@ module.exports = handle = (client, Client) => {
                             Client.sendFileFromBase64(from, bf.data.result, 'to.gif', 'nih', message)
 			})
                     } else {
-                        axios(`https://api.zeks.me/sticker/png`, { method: "post", headers: { "content-type": 'application/json' }, data: { base64: mtdt.toString('base64')}}).then(bf => {
+                        axios(`https://zenzapis.xyz/sticker/png`, { method: "post", headers: { "content-type": 'application/json' }, data: { base64: mtdt.toString('base64')}}).then(bf => {
                             Client.sendFileFromBase64(from, bf.data.result, 'to.png', 'nih', message)
                         })
                     }
