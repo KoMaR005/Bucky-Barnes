@@ -1,57 +1,78 @@
-<div align="center">
-<img alt="GitHub" src="https://img.shields.io/badge/WHATSAPP%20BOT-25D32?style=for-the-badge&logoColor=darkgreen"/>
-<br><br>
-  
-> A whatsapp bot made using adiwajshing/Baileys library
- <p>
-  <img src ="https://img.shields.io/badge/npm-v7.20.3-green.svg" />
-  <img src="https://img.shields.io/badge/node-%3E=16.6.1-darkgreen.svg" />
-   <a href="https://github.com/justpiple/whatsapp-bot/commit-activity" target="_blank">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-no-red.svg" />
-  </a>
-</p>
-<a href="https://chat.whatsapp.com/H2dvuYaI3SbKURzstwl7Wn"><img alt="WhatsApp" src="https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
- 
-</div>
+<p align="center">
+<img src="https://telegra.ph/file/5bd80998f8262a0a5e64f.jpg" alt="Ichigo Kurosaki" width="500"/>
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/justpiple/whatsapp-bot/)
+Base Bot WhatsApp Multi Device With [`Baileys Multi Device`](https://github.com/adiwajshing)
 
-[![Run on Repl.it](https://repl.it/badge/github/justpiple/whatsapp-bot)](https://repl.it/github/justpiple/whatsapp-bot)
+## Note
+Base Ini Free Untuk Semua, Tidak Untuk Diperjualbelikan Kecuali Lu Udah Tambahin Fitur Langka Di Script Ini Baru Boleh Jual
 
+## Thanks To
+* [`Adiwajshing`](https://github.com/adiwajshing)
+* [`Nurutomo`](https://github.com/Nurutomo)
+* [`Fandyyy`](https://github.com/FBOTZ-YT)
+* [`FERDIZ-afk`](https://github.com/FERDIZ-afk)
 
-### Install ⬇️
+## Connect With Me
+* [`Group WhatsApp`](https://chat.whatsapp.com/CSqakw6x2wRIOWTPL5a6a9)
+* [`Whatsapp`](https://wa.me/6285609233482?text=Assalamualaikum)
+* [`Instagram`](https://instagram.com/_nzrlafndi)
+* [`More...`](https://linktr.ee/NzrlAfndi)
+
+## Donate Me
+* [`Saweria`](https://saweria.co/Fandyy)
+* [`Gopay`](https://telegra.ph/file/4abd43eeab0c17edebff2.jpg)
+
+## License
+License: [MIT](https://en.wikipedia.org/wiki/MIT_License)
+
+## UNTUK PENGGUNA WINDOWS/RDP
+
+* Unduh & Instal Git [`Klik Disini`](https://git-scm.com/downloads)
+* Unduh & Instal NodeJS [`Klik Disini`](https://nodejs.org/en/download)
+* Unduh & Instal FFmpeg [`Klik Disini`](https://ffmpeg.org/download.html) (**Jangan Lupa Tambahkan FFmpeg ke variabel lingkungan PATH**)
+
 
 ```bash
-> git clone https://github.com/HARISGANZ/Hanz
-> cd Hanz
-> npm i
+git clone https://github.com/NzrlAfndi/Ichigo-Kurosaki
+cd Ichigo-Kurosaki
+yarn
+npm start
 ```
-### For termux users before running the above command write this command
+
+
+## FOR HEROKU USER
+# Install Buildpack
+- heroku/nodejs
+- https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
+- https://github.com/clhuang/heroku-buildpack-webp-binaries.git
+
+
+## FOR TERMUX/UBUNTU/SSH USER
+
 ```bash
-> apt-get update
-> apt-get upgrade
-> apt-get install -y nodejs git
+apt update && apt upgrade
+apt install git -y
+apt install nodejs -y
+apt install ffmpeg -y
+pkg install yarn
+git clone https://github.com/NzrlAfndi/Ichigo-Kurosaki
+cd Ichigo-Kurosaki
+yarn
+npm start
 ```
 
-#### Change `config.json` 
-##### Register in <b>[zeks.xyz](https://zeks.xyz)</b> to get apiKey then enter to zeksKey in `config.json`
-### Start ✅
-
+## Installing
 ```bash
-> npm start [session name] [--options]
+$ node .
+#standr run
+$ npm run dev
+#run use nodemon
 ```
-`options`
- `port`
---port [port number]
 
-after start it you need to scan the qr
-#### Session name and options is optional
-### Contact me
+## ❗ Warning
+WhatsApp bot is still in the development stage, so there are a few bugs
+WhatsApp Connection (BETA, not working perfectly)
 
-
-- [WHATSAPP](http://wa.me/6283144394823)
-- [GROUP CHAT WHATSAPP](https://chat.whatsapp.com/H2dvuYaI3SbKURzstwl7Wn)
+Editing Number Owner And More On [`settings.js`](https://github.com/NzrlAfndi/Ichigo-Kurosaki/blob/master/settings.js)
 
 
-## 🙏 Special Thanks to
-* <a href="https://github.com/adiwajshing/Baileys"><img alt="GitHub" src="https://img.shields.io/badge/@adiwajshing/Baileys%20-%23121011.svg?style=flat-square&logo=npm&color=white"/></a>
