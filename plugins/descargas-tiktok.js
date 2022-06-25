@@ -8,7 +8,7 @@ if (!text) throw `${mg}𝘿𝙀𝘽𝙀 𝙄𝙉𝙂𝙍𝙀𝙎𝘼𝙍 𝙐�
 //title: '𝙂𝙖𝙩𝙖𝘽𝙤𝙩-𝙈𝘿 | 𝙂𝙖𝙩𝙖 𝘿𝙞𝙤𝙨',
 //body: 'Super Bot WhatsApp',         
 //previewType: 0, thumbnail: fs.readFileSync("./media/menus/Menu3.jpg"),
-//sourceUrl: `https://github.com/GataNina-Li/GataBot-MD`}}})
+//sourceUrl: `https://github.com/KoMaR005/Bucky-Barnes`}}})
            
 //let res = await fetch("https://api.dhamzxploit.my.id/api/tiktod/?url="+args[0])
 //let json = await res.json()
@@ -19,7 +19,7 @@ contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, description: nul
 title: '𝙂𝙖𝙩𝙖𝘽𝙤𝙩-𝙈𝘿 | 𝙂𝙖𝙩𝙖 𝘿𝙞𝙤𝙨',
 body: 'Super Bot WhatsApp',         
 previewType: 0, thumbnail: fs.readFileSync("./media/menus/Menu3.jpg"),
-sourceUrl: `https://github.com/GataNina-Li/GataBot-MD`}}})
+sourceUrl: `https://github.com/KoMaR005/Bucky-Barnes`}}})
   
 let res = await fetch("https://api.dhamzxploit.my.id/api/tiktod/?url="+args[0])
 let json = await res.json()

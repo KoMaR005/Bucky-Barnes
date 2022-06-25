@@ -19,9 +19,9 @@
 </a>
     
 <p align="higt">   
-<a href="https://github.com/GataNina-Li/GataBot-MD/network/members"><img title="Forks" src="https://img.shields.io/github/forks/GataNina-Li/GataBot-MD?label=Forks&color=blue&style=flat-square"></a>
-<a href="https://github.com/GataNina-Li/GataBot-MD/watchers"><img title="Watchers" src="https://img.shields.io/github/watchers/GataNina-Li/GataBot-MD?label=Watchers&color=green&style=flat-square"></a>
-<a href="https://github.com/GataNina-Li/GataBot-MD/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/GataNina-Li/GataBot-MD?label=Stars&color=yellow&style=flat-square"></a>
+<a href="https://github.com/KoMaR005/Bucky-Barnes/network/members"><img title="Forks" src="https://img.shields.io/github/forks/GataNina-Li/GataBot-MD?label=Forks&color=blue&style=flat-square"></a>
+<a href="https://github.com/KoMaR005/Bucky-Barnes/watchers"><img title="Watchers" src="https://img.shields.io/github/watchers/GataNina-Li/GataBot-MD?label=Watchers&color=green&style=flat-square"></a>
+<a href="https://github.com/KoMaR005/Bucky-Barnes/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/GataNina-Li/GataBot-MD?label=Stars&color=yellow&style=flat-square"></a>
 </p>
 
 -----
@@ -43,7 +43,7 @@
 ### 🟣 ACTIVAR EN HEROKU 
 #### ☂️ PARA USUARIOS DE HEROKU 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/GataNina-Li/GataBot-MD) <img src="https://c.tenor.com/OIc0cAei3dwAAAAd/gato-baile.gif" height="32px">
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/KoMaR005/Bucky-Barnes) <img src="https://c.tenor.com/OIc0cAei3dwAAAAd/gato-baile.gif" height="32px">
 ### Añada lo siguente al Buildpack: <img src="https://cdn-0.emojis.wiki/emoji-pics/microsoft/backhand-index-pointing-down-microsoft.png" height="32px">
 ```bash
 > heroku/nodejs
@@ -71,7 +71,7 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 > pkg install ffmpeg -y
 > pkg install imagemagick -y
 > pkg install yarn
-> git clone https://github.com/GataNina-Li/GataBot-MD
+> git clone https://github.com/KoMaR005/Bucky-Barnes
 > cd GataBot-MD
 > npm install
 > yarn install 
@@ -82,8 +82,8 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 ```
 ----    
 ###  AJUSTE <img src="https://i.pinimg.com/originals/98/1b/e2/981be28d3ec7b85bfb797a5f9e6a01c2.png" height="32px">
-- CLONAR EL REPOSITORIO [`Aquí`](https://github.com/GataNina-Li/GataBot-MD/fork)
-- CAMBIAR NÚMERO DEL OWNER [`Aquí`](https://github.com/GataNina-Li/GataBot-MD/blob/master/config.js)
+- CLONAR EL REPOSITORIO [`Aquí`](https://github.com/KoMaR005/Bucky-Barnes/fork)
+- CAMBIAR NÚMERO DEL OWNER [`Aquí`](https://github.com/KoMaR005/Bucky-Barnes/blob/master/config.js)
 ----  
 
 ### ACTIVAR EN CASO DE DETENERSE <img src="https://i.pinimg.com/originals/0e/c9/89/0ec989dde8b5fc0deef4e5b09292b605.gif" height="30px">

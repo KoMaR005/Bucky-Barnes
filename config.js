@@ -4,16 +4,16 @@ import { fileURLToPath } from 'url'
 
 //⊱ ━━━━━.⋅ Añada los numeros a ser Propietario/a | Add the numbers to be Owner ⋅.━━━━ ⊰
 global.owner = [
-  ['593993684821', 'GataBot-MD 💖🐈', true],
-  ['593968585383'],
-  ['51941819582'],
-  ['51930583082'],
-  ['14509774891']
+  ['79773452127', 'Bucky Barnes 💖🐈', true],
+  ['79773452127'],
+  ['79773452127'],
+  ['79773452127'],
+  ['79773452127']
 ]
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ฅ^•ﻌ•^ฅ
 
 global.mods = [] 
-global.prems = ['528451003894'], 
+global.prems = ['79773452127'], 
 
 global.APIs = { // API Prefix.
   
@@ -71,8 +71,8 @@ global.APIKeys = { // APIKey Here
 
 //⊱ ━━━━━.⋅ Sticker WM ⋅.━━━━ ⊰
 
-global.packname = '🐈 𝙂𝙖𝙩𝙖𝘽𝙤𝙩-𝙈𝘿'
-global.author = '𝙂𝙖𝙩𝙖 𝘿𝙞𝙤𝙨'
+global.packname = '🐈 Bucky Barnes'
+global.author = '☣ⒹⓞⓃ ⓀⓞⓂⓐⓇ☣'
 
 //━━━━━━━━━━━━━━━━━━━━ ฅ^•ﻌ•^ฅ
 
@@ -82,7 +82,7 @@ global.author = '𝙂𝙖𝙩𝙖 𝘿𝙞𝙤𝙨'
 global.vs = '1.1.5'
 global.version = vs
 
-global.gt = '𝙂𝙖𝙩𝙖𝘽𝙤𝙩-𝙈𝘿'
+global.gt = 'Bucky Barnes'
 global.gatabot = gt
 
 global.yt = 'https://youtube.com/channel/UCpNU4eY7eiI0ve05CssjdbA'
@@ -91,7 +91,7 @@ global.youtube = yt
 global.ig = 'https://www.instagram.com/gata_dios'
 global.gatadiosig = ig
 
-global.md = 'https://github.com/GataNina-Li/GataBot-MD'
+global.md = 'https://github.com/KoMaR005'
 global.gatabot = md
 
 global.nn = 'https://chat.whatsapp.com/Hahc7UwSouH9jIDStkT5QW'
@@ -134,8 +134,8 @@ global.exito = eg
 
 //⊱ ━━━━━.⋅ Información | Information ⋅.━━━━ ⊰
 
-global.wm = '𝙂𝙖𝙩𝙖𝘽𝙤𝙩-𝙈𝘿 | 𝙂𝙖𝙩𝙖 𝘿𝙞𝙤𝙨'
-global.igfg = '𝙂𝙖𝙩𝙖𝘽𝙤𝙩-𝙈𝘿'
+global.wm = 'Bucky Barnes | ☣ⒹⓞⓃ ⓀⓞⓂⓐⓇ☣'
+global.igfg = 'Bucky Barnes'
 global.wait = '*⌛ _Cargando..._ ▬▬▬▭*'
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ฅ^•ﻌ•^ฅ

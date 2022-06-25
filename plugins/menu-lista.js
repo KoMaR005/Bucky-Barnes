@@ -56,7 +56,7 @@ text: `╭─────────────────────❀\n�
 ┃✪ *Activa durante | Active during* 
 ┃➺ ${uptime}
 ┃   ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-┃✪ *Versión de GataBot-MD*
+┃✪ *Versión de Bucky Barnes*
 ┃➺ ${vs}
 ┃   ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 ┃✪ *Usuario(s) | Users*
@@ -79,7 +79,7 @@ await conn.sendMessage(m.chat, listMessage)
 }
 handler.help = ['en', 'dis'].map(v => v + 'able <option>')
 handler.tags = ['group', 'owner']
-handler.command = /^(меню2|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|m|\?)$/i
+handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|меню1.2|ayuda|commands|commandos|m|\?)$/i
 //handler.register = true
 handler.exp = 50
 export default handler
@@ -95,16 +95,16 @@ function ucapan() {
   const time = moment.tz('America/Los_Angeles').format('HH')  //America/Los_Angeles  Asia/Jakarta   America/Toronto
   let res = "👋 *ДОСВИДАНИЕ | ДОБРО ПОЖАЛОВАТЬ* 👋"
   if (time >= 4) {
-    res = "🌇 *Доброе утро | Доброе утро* ⛅"
+    res = "🌇 *Buenos Días | Доброе утро* ⛅"
   }
   if (time >= 11) {
-    res = "🏙️ *Добрый вечер | Добрый вечер* 🌤️"
+    res = "🏙️ *Buenas Tardes | Добрый вечер* 🌤️"
   }
   if (time >= 15) {
-    res = "🌆 *Добрый вечер | Добрый вечер* 🌥️"
+    res = "🌆 *Buenas tardes | Добрый вечер* 🌥️"
   }
   if (time >= 17) {
-    res = "🌃 *Доброй ночи | Доброй ночи* 💫"
+    res = "🌃 *Buenas noches | Доброй ночи* 💫"
   }
   return res
 }

@@ -424,7 +424,7 @@ _(𝑢𝑠𝑜 𝑠𝑖𝑛 𝑝𝑟𝑒𝑓𝑖𝑗𝑜)_
 ° ඬ⃟👑 _${usedPrefix}añadirdiamantes *<@tag> <cantidad>*_
 ° ඬ⃟👑 _${usedPrefix}añadirxp *<@tag> <cantidad>*_
 `.trim()
-conn.sendHydrated(m.chat, str, wm, pp, 'https://github.com/GataNina-Li/GataBot-MD', '𝙶𝙸𝚃𝙷𝚄𝙱', null, null, [
+conn.sendHydrated(m.chat, str, wm, pp, 'https://github.com/KoMaR005/Bucky-Barnes', '𝙶𝙸𝚃𝙷𝚄𝙱', null, null, [
 ['💖 𝘿𝙤𝙣𝙖𝙧 | 𝘿𝙤𝙣𝙖𝙩𝙚', '.donar'],
 ['💗 𝙈𝙚𝙣𝙪 𝘼𝙫𝙚𝙣𝙩𝙪𝙧𝙖 | 𝙍𝙋𝙂 💗', null],
 ['💝 𝙈𝙚𝙣𝙪 𝘼𝙪𝙙𝙞𝙤𝙨 💝', '.audios']
@@ -439,7 +439,7 @@ throw e
 }}
 handler.help = ['menu', 'help', '?']
 handler.tags = ['main']
-handler.command = /^(menucompleto|полноеменю|allm\?)$/i
+handler.command = /^(menucompleto|allmenu|allm\?)$/i
 //handler.register = true
 handler.exp = 50
 handler.fail = null
